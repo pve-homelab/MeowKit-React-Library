@@ -162,6 +162,10 @@
       "types": "./dist/app-layout/index.d.ts",
       "import": "./dist/app-layout/index.js"
     },
+    "./icon": {
+      "types": "./dist/icon/index.d.ts",
+      "import": "./dist/icon/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"

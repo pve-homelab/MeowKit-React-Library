@@ -58,6 +58,7 @@ export default defineConfig({
     'breadcrumb/index': 'src/breadcrumb/index.tsx',
     'pagination/index': 'src/pagination/index.tsx',
     'app-layout/index': 'src/app-layout/index.tsx',
+    'icon/index': 'src/icon/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
