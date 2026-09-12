@@ -86,6 +86,10 @@
       "types": "./dist/progress-bar/index.d.ts",
       "import": "./dist/progress-bar/index.js"
     },
+    "./alert": {
+      "types": "./dist/alert/index.d.ts",
+      "import": "./dist/alert/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"

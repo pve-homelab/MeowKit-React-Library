@@ -1,0 +1,79 @@
+.root {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--mk-space-3);
+  padding: var(--mk-space-3) var(--mk-space-4);
+  border: 1px solid var(--mk-color-border);
+  border-left-width: 4px;
+  border-radius: var(--mk-radius-md);
+  background: var(--mk-color-surface);
+  color: var(--mk-color-text);
+  font-family: var(--mk-font-family-sans);
+  font-size: var(--mk-font-size-sm);
+  line-height: var(--mk-line-height-normal);
+}
+
+.info {
+  border-left-color: var(--mk-color-info);
+}
+
+.success {
+  border-left-color: var(--mk-color-success);
+}
+
+.warning {
+  border-left-color: var(--mk-color-warning);
+}
+
+.error {
+  border-left-color: var(--mk-color-error);
+}
+
+.body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--mk-space-1);
+  min-width: 0;
+}
+
+.header {
+  font-weight: var(--mk-font-weight-bold);
+}
+
+.content {
+  color: var(--mk-color-text);
+}
+
+.action {
+  flex: 0 0 auto;
+  align-self: center;
+}
+
+.dismiss {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: var(--mk-radius-full);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.dismiss:hover {
+  background: var(--mk-color-surface-muted);
+}
+
+.dismiss:focus-visible {
+  outline: 2px solid var(--mk-color-focus-ring);
+  outline-offset: 2px;
+}
