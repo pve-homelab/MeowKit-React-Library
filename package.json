@@ -6,7 +6,8 @@
     "build": "pnpm -r --filter=@meowkit/* run build",
     "test": "pnpm -r --filter=@meowkit/* run test",
     "typecheck": "pnpm -r --filter=@meowkit/* run typecheck",
-    "storybook": "pnpm --filter=@meowkit/storybook storybook"
+    "storybook": "pnpm --filter=@meowkit/storybook storybook",
+    "smoke": "node scripts/smoke-exports.mjs"
   },
   "devDependencies": {
     "typescript": "^5.8.2"
