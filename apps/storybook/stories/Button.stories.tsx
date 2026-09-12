@@ -13,10 +13,8 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {};
+export const Default: Story = {};
 export const Secondary: Story = { args: { variant: 'secondary' } };
 export const Ghost: Story = { args: { variant: 'ghost' } };
-export const Destructive: Story = { args: { variant: 'destructive', children: 'Erase' } };
-export const Icon: Story = {
-  args: { variant: 'icon', 'aria-label': 'Close', children: '×' },
-};
+export const Destructive: Story = { args: { variant: 'destructive', children: 'Delete' } };
+export const Icon: Story = { args: { variant: 'icon', 'aria-label': 'Close', children: '×' } };

@@ -1,6 +1,6 @@
 # MeowKit React Library
 
-Official MeowKit React UI library (Phase 1 foundation).
+Official MeowKit React UI library (Phase 1 foundation + Phase 2 primitives).
 
 See `docs/superpowers/specs/2026-09-13-meowkit-react-ui-library-design.md`.
 
@@ -58,4 +58,56 @@ createRoot(document.getElementById('root')!).render(
 );
 ```
 
-`pnpm smoke` asserts compiled `dist` exports and that Button CSS is emitted. It does not rebuild — run `pnpm build` first.
+`pnpm smoke` asserts compiled `dist` exports for every `@meowkit/components` public entry and that Button CSS is emitted. It does not rebuild — run `pnpm build` first.
+
+## Components
+
+Path imports from `@meowkit/components/<name>`. Storybook titles live under `Primitives/*`.
+
+| Import | Component | Storybook |
+| --- | --- | --- |
+| `@meowkit/components/button` | Button | `Primitives/Button` |
+| `@meowkit/components/provider` | MeowKitProvider | Story decorator |
+| `@meowkit/components/form-field` | FormField | `Primitives/FormField` |
+| `@meowkit/components/input` | Input | `Primitives/Input` |
+| `@meowkit/components/textarea` | Textarea | `Primitives/Textarea` |
+| `@meowkit/components/search-input` | SearchInput | `Primitives/SearchInput` |
+| `@meowkit/components/number-input` | NumberInput | `Primitives/NumberInput` |
+| `@meowkit/components/file-input` | FileInput | `Primitives/FileInput` |
+| `@meowkit/components/checkbox` | Checkbox | `Primitives/Checkbox` |
+| `@meowkit/components/switch` | Switch | `Primitives/Switch` |
+| `@meowkit/components/radio-group` | RadioGroup | `Primitives/RadioGroup` |
+| `@meowkit/components/slider` | Slider | `Primitives/Slider` |
+| `@meowkit/components/select` | Select | `Primitives/Select` |
+| `@meowkit/components/button-dropdown` | ButtonDropdown | `Primitives/ButtonDropdown` |
+| `@meowkit/components/tabs` | Tabs | `Primitives/Tabs` |
+| `@meowkit/components/segmented-control` | SegmentedControl | `Primitives/SegmentedControl` |
+| `@meowkit/components/badge` | Badge | `Primitives/Badge` |
+| `@meowkit/components/tag` | Tag | `Primitives/Tag` |
+| `@meowkit/components/link` | Link | `Primitives/Link` |
+| `@meowkit/components/spinner` | Spinner | `Primitives/Spinner` |
+| `@meowkit/components/progress-bar` | ProgressBar | `Primitives/ProgressBar` |
+| `@meowkit/components/alert` | Alert | `Primitives/Alert` |
+| `@meowkit/components/modal` | Modal | `Primitives/Modal` |
+| `@meowkit/components/drawer` | Drawer | `Primitives/Drawer` |
+| `@meowkit/components/popover` | Popover | `Primitives/Popover` |
+| `@meowkit/components/tooltip` | Tooltip | `Primitives/Tooltip` |
+| `@meowkit/components/flashbar` | Flashbar | `Primitives/Flashbar` |
+
+Multiselect is deferred to a later phase (Companion does not need multi chip select yet).
+
+Refresh README images after `pnpm build` with `node scripts/capture-screenshots.mjs` (Playwright + compiled MeowKit CSS).
+
+## Screenshots
+
+Button, Input, Modal, Alert, and app chrome atoms (Badge, Tag, Link, Spinner, ProgressBar) captured from compiled library CSS.
+
+![Button](docs/images/button.png)
+
+![Input](docs/images/input.png)
+
+![Modal](docs/images/modal.png)
+
+![Alert](docs/images/alert.png)
+
+![App chrome](docs/images/chrome.png)
