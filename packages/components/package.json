@@ -50,6 +50,10 @@
       "types": "./dist/slider/index.d.ts",
       "import": "./dist/slider/index.js"
     },
+    "./select": {
+      "types": "./dist/select/index.d.ts",
+      "import": "./dist/select/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"

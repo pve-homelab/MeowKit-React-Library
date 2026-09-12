@@ -30,6 +30,7 @@ export default defineConfig({
     'switch/index': 'src/switch/index.tsx',
     'radio-group/index': 'src/radio-group/index.tsx',
     'slider/index': 'src/slider/index.tsx',
+    'select/index': 'src/select/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
