@@ -1,4 +1,5 @@
 import { applyAccent, applyMode, type Accent, type Mode } from '@meowkit/global-styles';
+import * as Tooltip from '@radix-ui/react-tooltip';
 import { useContext, useEffect, useLayoutEffect, useMemo, useState, type ReactNode } from 'react';
 import { MeowKitContext, type MeowKitContextValue } from './context';
 
@@ -39,7 +40,11 @@ export function MeowKitProvider({
     [mode, accent],
   );
 
-  return <MeowKitContext.Provider value={value}>{children}</MeowKitContext.Provider>;
+  return (
+    <MeowKitContext.Provider value={value}>
+      <Tooltip.Provider delayDuration={0}>{children}</Tooltip.Provider>
+    </MeowKitContext.Provider>
+  );
 }
 
 export function useMeowKit(): MeowKitContextValue {

@@ -1,0 +1,13 @@
+.content {
+  max-width: calc(var(--mk-space-7) * 5);
+  padding: var(--mk-space-1) var(--mk-space-2);
+  background: var(--mk-color-text);
+  color: var(--mk-color-text-inverse);
+  border-radius: var(--mk-radius-sm);
+  box-shadow: var(--mk-shadow-sm);
+  font-family: var(--mk-font-family-sans);
+  font-size: var(--mk-font-size-xs);
+  font-weight: var(--mk-font-weight-medium);
+  line-height: var(--mk-line-height-tight);
+  z-index: var(--mk-z-dropdown);
+}

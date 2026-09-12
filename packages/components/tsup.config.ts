@@ -42,6 +42,8 @@ export default defineConfig({
     'alert/index': 'src/alert/index.tsx',
     'modal/index': 'src/modal/index.tsx',
     'drawer/index': 'src/drawer/index.tsx',
+    'popover/index': 'src/popover/index.tsx',
+    'tooltip/index': 'src/tooltip/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
