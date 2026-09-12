@@ -118,6 +118,14 @@
       "types": "./dist/space-between/index.d.ts",
       "import": "./dist/space-between/index.js"
     },
+    "./grid": {
+      "types": "./dist/grid/index.d.ts",
+      "import": "./dist/grid/index.js"
+    },
+    "./column-layout": {
+      "types": "./dist/column-layout/index.d.ts",
+      "import": "./dist/column-layout/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"

@@ -47,6 +47,8 @@ export default defineConfig({
     'flashbar/index': 'src/flashbar/index.tsx',
     'box/index': 'src/box/index.tsx',
     'space-between/index': 'src/space-between/index.tsx',
+    'grid/index': 'src/grid/index.tsx',
+    'column-layout/index': 'src/column-layout/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
