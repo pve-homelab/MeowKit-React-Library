@@ -1,0 +1,14 @@
+{
+  "name": "meowkit-react-library",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "build": "pnpm -r --filter=@meowkit/* run build",
+    "test": "pnpm -r --filter=@meowkit/* run test",
+    "typecheck": "pnpm -r --filter=@meowkit/* run typecheck",
+    "storybook": "pnpm --filter=@meowkit/storybook storybook"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}
