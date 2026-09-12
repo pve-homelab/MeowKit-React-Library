@@ -66,7 +66,7 @@ export function getColorTokens(mode: Mode, accent: Accent): ColorTokens {
   if (accent === 'lime') {
     return {
       ...base,
-      primary: mode === 'light' ? '#BBE700' : '#BBE700',
+      primary: '#BBE700',
       primaryHover: mode === 'light' ? '#9DDE00' : '#D7FF4A',
       primaryText: '#000000',
     };
