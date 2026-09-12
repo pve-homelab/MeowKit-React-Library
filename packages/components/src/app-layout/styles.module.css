@@ -1,0 +1,121 @@
+.root {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  height: 100%;
+  background: var(--mk-color-background);
+  color: var(--mk-color-text);
+  font-family: var(--mk-font-family-sans);
+  font-size: var(--mk-font-size-sm);
+  line-height: var(--mk-line-height-normal);
+}
+
+.chrome {
+  display: flex;
+  align-items: center;
+  gap: var(--mk-space-2);
+  min-height: var(--mk-space-6);
+  padding: var(--mk-space-1) var(--mk-space-2);
+  background: var(--mk-color-surface);
+  border-bottom: 1px solid var(--mk-color-border);
+}
+
+.toolsToggle {
+  margin-inline-start: auto;
+}
+
+.toggle {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  width: var(--mk-space-6);
+  height: var(--mk-space-6);
+  border: none;
+  border-radius: var(--mk-radius-full);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  background: var(--mk-color-surface-muted);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--mk-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.body {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+.navigation,
+.tools {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: calc(var(--mk-space-7) * 5);
+  min-width: 0;
+  overflow: auto;
+  background: var(--mk-color-surface);
+  color: var(--mk-color-text);
+}
+
+.navigation {
+  border-inline-end: 1px solid var(--mk-color-border);
+}
+
+.tools {
+  border-inline-start: 1px solid var(--mk-color-border);
+}
+
+.navigation[hidden],
+.tools[hidden] {
+  display: none;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+
+.notifications {
+  flex: 0 0 auto;
+  padding: var(--mk-space-3) var(--mk-space-4) 0;
+}
+
+.stickyNotifications {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--mk-color-background);
+}
+
+.contentHeader {
+  flex: 0 0 auto;
+  padding: var(--mk-space-4) var(--mk-space-4) 0;
+}
+
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: var(--mk-space-4);
+}
+
+.statusBar {
+  flex: 0 0 auto;
+}

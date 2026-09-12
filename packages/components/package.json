@@ -158,6 +158,10 @@
       "types": "./dist/pagination/index.d.ts",
       "import": "./dist/pagination/index.js"
     },
+    "./app-layout": {
+      "types": "./dist/app-layout/index.d.ts",
+      "import": "./dist/app-layout/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"
