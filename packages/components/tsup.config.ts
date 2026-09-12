@@ -29,6 +29,7 @@ export default defineConfig({
     'checkbox/index': 'src/checkbox/index.tsx',
     'switch/index': 'src/switch/index.tsx',
     'radio-group/index': 'src/radio-group/index.tsx',
+    'slider/index': 'src/slider/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
