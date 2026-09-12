@@ -59,6 +59,8 @@ export default defineConfig({
     'pagination/index': 'src/pagination/index.tsx',
     'app-layout/index': 'src/app-layout/index.tsx',
     'icon/index': 'src/icon/index.tsx',
+    'empty-state/index': 'src/empty-state/index.tsx',
+    'key-value-pairs/index': 'src/key-value-pairs/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],

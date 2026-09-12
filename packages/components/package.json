@@ -166,6 +166,14 @@
       "types": "./dist/icon/index.d.ts",
       "import": "./dist/icon/index.js"
     },
+    "./empty-state": {
+      "types": "./dist/empty-state/index.d.ts",
+      "import": "./dist/empty-state/index.js"
+    },
+    "./key-value-pairs": {
+      "types": "./dist/key-value-pairs/index.d.ts",
+      "import": "./dist/key-value-pairs/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"
