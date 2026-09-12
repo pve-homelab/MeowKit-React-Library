@@ -1,0 +1,20 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mk-space-1);
+  font-family: var(--mk-font-family-sans);
+  font-size: var(--mk-font-size-sm);
+  line-height: var(--mk-line-height-normal);
+}
+
+.label {
+  font-weight: var(--mk-font-weight-medium);
+}
+
+.description {
+  color: var(--mk-color-text-muted);
+}
+
+.error {
+  color: var(--mk-color-error);
+}

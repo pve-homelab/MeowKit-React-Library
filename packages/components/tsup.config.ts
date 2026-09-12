@@ -1,12 +1,26 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 import { defineConfig } from 'tsup';
 
-const buttonJsPath = 'dist/button/index.js';
+async function onSuccess() {
+  const dist = 'dist';
+  for (const name of readdirSync(dist, { withFileTypes: true })) {
+    if (!name.isDirectory()) continue;
+    const jsPath = join(dist, name.name, 'index.js');
+    const cssPath = join(dist, name.name, 'index.css');
+    if (!existsSync(jsPath) || !existsSync(cssPath)) continue;
+    const js = readFileSync(jsPath, 'utf8');
+    if (!js.includes('./index.css')) {
+      writeFileSync(jsPath, `import "./index.css";\n${js}`);
+    }
+  }
+}
 
 export default defineConfig({
   entry: {
     'button/index': 'src/button/index.tsx',
+    'form-field/index': 'src/form-field/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
@@ -19,10 +33,5 @@ export default defineConfig({
   loader: {
     '.css': 'local-css',
   },
-  async onSuccess() {
-    const js = readFileSync(buttonJsPath, 'utf8');
-    if (!js.includes('./index.css')) {
-      writeFileSync(buttonJsPath, `import "./index.css";\n${js}`);
-    }
-  },
+  onSuccess,
 });
