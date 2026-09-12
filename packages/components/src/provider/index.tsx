@@ -1,6 +1,7 @@
 import { applyAccent, applyMode, type Accent, type Mode } from '@meowkit/global-styles';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { useContext, useEffect, useLayoutEffect, useMemo, useState, type ReactNode } from 'react';
+import { FlashbarHost, FlashbarProvider } from '../flashbar';
 import { MeowKitContext, type MeowKitContextValue } from './context';
 
 export interface MeowKitProviderProps {
@@ -42,7 +43,12 @@ export function MeowKitProvider({
 
   return (
     <MeowKitContext.Provider value={value}>
-      <Tooltip.Provider delayDuration={0}>{children}</Tooltip.Provider>
+      <FlashbarProvider>
+        <Tooltip.Provider delayDuration={0}>
+          {children}
+          <FlashbarHost />
+        </Tooltip.Provider>
+      </FlashbarProvider>
     </MeowKitContext.Provider>
   );
 }

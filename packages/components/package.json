@@ -106,6 +106,10 @@
       "types": "./dist/tooltip/index.d.ts",
       "import": "./dist/tooltip/index.js"
     },
+    "./flashbar": {
+      "types": "./dist/flashbar/index.d.ts",
+      "import": "./dist/flashbar/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"

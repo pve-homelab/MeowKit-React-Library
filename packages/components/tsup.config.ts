@@ -44,6 +44,7 @@ export default defineConfig({
     'drawer/index': 'src/drawer/index.tsx',
     'popover/index': 'src/popover/index.tsx',
     'tooltip/index': 'src/tooltip/index.tsx',
+    'flashbar/index': 'src/flashbar/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
