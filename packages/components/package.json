@@ -90,6 +90,10 @@
       "types": "./dist/alert/index.d.ts",
       "import": "./dist/alert/index.js"
     },
+    "./modal": {
+      "types": "./dist/modal/index.d.ts",
+      "import": "./dist/modal/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"

@@ -40,6 +40,7 @@ export default defineConfig({
     'spinner/index': 'src/spinner/index.tsx',
     'progress-bar/index': 'src/progress-bar/index.tsx',
     'alert/index': 'src/alert/index.tsx',
+    'modal/index': 'src/modal/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
