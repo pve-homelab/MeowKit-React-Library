@@ -1,0 +1,28 @@
+.field {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  border: 1px solid var(--mk-color-border);
+  border-radius: var(--mk-radius-md);
+  padding: var(--mk-space-2) var(--mk-space-3);
+  background: var(--mk-color-surface);
+  color: var(--mk-color-text);
+  font-family: var(--mk-font-family-sans);
+  font-size: var(--mk-font-size-sm);
+  line-height: var(--mk-line-height-normal);
+}
+
+.field:focus-visible {
+  outline: 2px solid var(--mk-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.field:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.field[aria-invalid='true'],
+.invalid {
+  border-color: var(--mk-color-error);
+}

@@ -21,6 +21,10 @@ export default defineConfig({
   entry: {
     'button/index': 'src/button/index.tsx',
     'form-field/index': 'src/form-field/index.tsx',
+    'input/index': 'src/input/index.tsx',
+    'textarea/index': 'src/textarea/index.tsx',
+    'search-input/index': 'src/search-input/index.tsx',
+    'number-input/index': 'src/number-input/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
