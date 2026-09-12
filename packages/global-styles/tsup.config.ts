@@ -27,10 +27,11 @@ export default defineConfig({
     options.packages = 'external';
   },
   async onSuccess() {
+    const tokens = splitCssImports(readFileSync('src/tokens-default.css', 'utf8'));
     const reset = splitCssImports(readFileSync('src/reset.css', 'utf8'));
     const base = splitCssImports(readFileSync('src/base.css', 'utf8'));
-    const imports = [reset.imports, base.imports].filter(Boolean).join('\n');
-    const body = [reset.body, base.body].filter(Boolean).join('\n\n');
+    const imports = [tokens.imports, reset.imports, base.imports].filter(Boolean).join('\n');
+    const body = [tokens.body, reset.body, base.body].filter(Boolean).join('\n\n');
     writeFileSync('dist/index.css', `${imports ? `${imports}\n\n` : ''}${body}\n`);
 
     const jsPath = 'dist/index.js';

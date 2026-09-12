@@ -1,3 +1,4 @@
+import { createRef } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
@@ -19,6 +20,20 @@ describe('Button', () => {
       </Button>,
     );
     expect(screen.getByRole('button', { name: 'Close' })).toBeInTheDocument();
+  });
+
+  it('forwards ref to the native button', () => {
+    const ref = createRef<HTMLButtonElement>();
+    render(<Button ref={ref}>Save</Button>);
+    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+    expect(ref.current?.textContent).toBe('Save');
+  });
+
+  it('warns when icon variant lacks an accessible name', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    render(<Button variant="icon" />);
+    expect(warn).toHaveBeenCalled();
+    warn.mockRestore();
   });
 
   it('does not fire onClick when disabled', async () => {

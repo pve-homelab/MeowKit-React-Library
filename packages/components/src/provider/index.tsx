@@ -1,5 +1,5 @@
 import { applyAccent, applyMode, type Accent, type Mode } from '@meowkit/global-styles';
-import { useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useContext, useEffect, useLayoutEffect, useMemo, useState, type ReactNode } from 'react';
 import { MeowKitContext, type MeowKitContextValue } from './context';
 
 export interface MeowKitProviderProps {
@@ -24,7 +24,7 @@ export function MeowKitProvider({
     setAccentState(accentProp);
   }, [accentProp]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     applyMode(mode);
     applyAccent(accent);
   }, [mode, accent]);

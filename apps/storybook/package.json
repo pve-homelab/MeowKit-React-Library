@@ -14,13 +14,13 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^8.6.4",
-    "@storybook/addon-interactions": "^8.6.4",
-    "@storybook/react": "^8.6.4",
-    "@storybook/react-vite": "^8.6.4",
+    "@storybook/addon-essentials": "8.6.18",
+    "@storybook/addon-interactions": "8.6.18",
+    "@storybook/react": "8.6.18",
+    "@storybook/react-vite": "8.6.18",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
-    "storybook": "^8.6.4",
+    "storybook": "8.6.18",
     "typescript": "^5.8.2",
     "vite": "^6.2.2"
   }
