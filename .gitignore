@@ -1,8 +1,8 @@
-﻿.worktrees/
-.superpowers/
 node_modules
 dist
 coverage
 storybook-static
 *.log
 .DS_Store
+.worktrees/
+.superpowers/
