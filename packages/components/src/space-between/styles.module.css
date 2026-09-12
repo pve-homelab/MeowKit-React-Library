@@ -1,0 +1,31 @@
+.root {
+  display: flex;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.horizontal {
+  flex-direction: row;
+}
+
+.sizeXs {
+  gap: var(--mk-space-1);
+}
+
+.sizeS {
+  gap: var(--mk-space-2);
+}
+
+.sizeM {
+  gap: var(--mk-space-3);
+}
+
+.sizeL {
+  gap: var(--mk-space-5);
+}
+
+.sizeXl {
+  gap: var(--mk-space-6);
+}

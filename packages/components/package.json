@@ -110,6 +110,14 @@
       "types": "./dist/flashbar/index.d.ts",
       "import": "./dist/flashbar/index.js"
     },
+    "./box": {
+      "types": "./dist/box/index.d.ts",
+      "import": "./dist/box/index.js"
+    },
+    "./space-between": {
+      "types": "./dist/space-between/index.d.ts",
+      "import": "./dist/space-between/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"

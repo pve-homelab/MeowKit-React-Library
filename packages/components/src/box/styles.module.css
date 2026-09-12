@@ -1,0 +1,120 @@
+.root {
+  box-sizing: border-box;
+  font-family: var(--mk-font-family-sans);
+}
+
+.paddingNone {
+  padding: 0;
+}
+
+.padding0 {
+  padding: var(--mk-space-0);
+}
+
+.padding1 {
+  padding: var(--mk-space-1);
+}
+
+.padding2 {
+  padding: var(--mk-space-2);
+}
+
+.padding3 {
+  padding: var(--mk-space-3);
+}
+
+.padding4 {
+  padding: var(--mk-space-4);
+}
+
+.padding5 {
+  padding: var(--mk-space-5);
+}
+
+.padding6 {
+  padding: var(--mk-space-6);
+}
+
+.padding7 {
+  padding: var(--mk-space-7);
+}
+
+.marginNone {
+  margin: 0;
+}
+
+.margin0 {
+  margin: var(--mk-space-0);
+}
+
+.margin1 {
+  margin: var(--mk-space-1);
+}
+
+.margin2 {
+  margin: var(--mk-space-2);
+}
+
+.margin3 {
+  margin: var(--mk-space-3);
+}
+
+.margin4 {
+  margin: var(--mk-space-4);
+}
+
+.margin5 {
+  margin: var(--mk-space-5);
+}
+
+.margin6 {
+  margin: var(--mk-space-6);
+}
+
+.margin7 {
+  margin: var(--mk-space-7);
+}
+
+.colorText {
+  color: var(--mk-color-text);
+}
+
+.colorMuted {
+  color: var(--mk-color-text-muted);
+}
+
+.colorInverse {
+  color: var(--mk-color-text-inverse);
+}
+
+.fontSizeXs {
+  font-size: var(--mk-font-size-xs);
+}
+
+.fontSizeSm {
+  font-size: var(--mk-font-size-sm);
+}
+
+.fontSizeMd {
+  font-size: var(--mk-font-size-md);
+}
+
+.fontSizeLg {
+  font-size: var(--mk-font-size-lg);
+}
+
+.fontSizeXl {
+  font-size: var(--mk-font-size-xl);
+}
+
+.fontWeightRegular {
+  font-weight: var(--mk-font-weight-regular);
+}
+
+.fontWeightMedium {
+  font-weight: var(--mk-font-weight-medium);
+}
+
+.fontWeightBold {
+  font-weight: var(--mk-font-weight-bold);
+}

@@ -45,6 +45,8 @@ export default defineConfig({
     'popover/index': 'src/popover/index.tsx',
     'tooltip/index': 'src/tooltip/index.tsx',
     'flashbar/index': 'src/flashbar/index.tsx',
+    'box/index': 'src/box/index.tsx',
+    'space-between/index': 'src/space-between/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
