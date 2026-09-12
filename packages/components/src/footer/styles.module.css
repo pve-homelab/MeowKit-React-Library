@@ -1,0 +1,11 @@
+.root {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--mk-space-2);
+  color: var(--mk-color-text);
+  font-family: var(--mk-font-family-sans);
+  font-size: var(--mk-font-size-sm);
+  line-height: var(--mk-line-height-normal);
+}

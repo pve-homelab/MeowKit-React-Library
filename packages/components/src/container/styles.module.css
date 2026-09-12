@@ -1,0 +1,41 @@
+.root {
+  box-sizing: border-box;
+  background: var(--mk-color-surface);
+  color: var(--mk-color-text);
+  border: 1px solid var(--mk-color-border);
+  font-family: var(--mk-font-family-sans);
+}
+
+.default {
+  border-radius: var(--mk-radius-md);
+}
+
+.stacked {
+  border-radius: 0;
+}
+
+.stacked + .stacked {
+  border-top: none;
+}
+
+.header {
+  padding: var(--mk-space-3) var(--mk-space-4);
+  border-bottom: 1px solid var(--mk-color-border);
+}
+
+.content {
+  min-width: 0;
+}
+
+.contentPadded {
+  padding: var(--mk-space-4);
+}
+
+.contentFlush {
+  padding: 0;
+}
+
+.footer {
+  padding: var(--mk-space-3) var(--mk-space-4);
+  border-top: 1px solid var(--mk-color-border);
+}
