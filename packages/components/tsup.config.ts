@@ -25,6 +25,7 @@ export default defineConfig({
     'textarea/index': 'src/textarea/index.tsx',
     'search-input/index': 'src/search-input/index.tsx',
     'number-input/index': 'src/number-input/index.tsx',
+    'file-input/index': 'src/file-input/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],

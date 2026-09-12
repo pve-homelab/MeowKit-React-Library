@@ -30,6 +30,10 @@
       "types": "./dist/number-input/index.d.ts",
       "import": "./dist/number-input/index.js"
     },
+    "./file-input": {
+      "types": "./dist/file-input/index.d.ts",
+      "import": "./dist/file-input/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"
