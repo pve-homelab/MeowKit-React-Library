@@ -55,6 +55,8 @@ export default defineConfig({
     'sidebar/index': 'src/sidebar/index.tsx',
     'toolbar/index': 'src/toolbar/index.tsx',
     'status-bar/index': 'src/status-bar/index.tsx',
+    'breadcrumb/index': 'src/breadcrumb/index.tsx',
+    'pagination/index': 'src/pagination/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
