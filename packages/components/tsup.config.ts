@@ -41,6 +41,7 @@ export default defineConfig({
     'progress-bar/index': 'src/progress-bar/index.tsx',
     'alert/index': 'src/alert/index.tsx',
     'modal/index': 'src/modal/index.tsx',
+    'drawer/index': 'src/drawer/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],

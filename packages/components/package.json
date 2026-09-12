@@ -94,6 +94,10 @@
       "types": "./dist/modal/index.d.ts",
       "import": "./dist/modal/index.js"
     },
+    "./drawer": {
+      "types": "./dist/drawer/index.d.ts",
+      "import": "./dist/drawer/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"
