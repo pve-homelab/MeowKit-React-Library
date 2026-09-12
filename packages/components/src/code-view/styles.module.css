@@ -1,0 +1,41 @@
+.root {
+  box-sizing: border-box;
+  display: flex;
+  overflow: auto;
+  margin: 0;
+  padding: var(--mk-space-3);
+  background: var(--mk-color-surface-muted);
+  border: 1px solid var(--mk-color-border);
+  border-radius: var(--mk-radius-sm);
+  color: var(--mk-color-text);
+  font-family: var(--mk-font-family-mono);
+  font-size: var(--mk-font-size-sm);
+  line-height: var(--mk-line-height-normal);
+}
+
+.gutter {
+  flex-shrink: 0;
+  margin-right: var(--mk-space-3);
+  padding-right: var(--mk-space-3);
+  border-right: 1px solid var(--mk-color-border);
+  color: var(--mk-color-text-muted);
+  text-align: right;
+  user-select: none;
+}
+
+.lineNumber {
+  display: block;
+}
+
+.pre {
+  flex: 1;
+  margin: 0;
+  min-width: 0;
+  overflow: auto;
+  font-family: inherit;
+}
+
+.code {
+  font-family: inherit;
+  white-space: pre;
+}

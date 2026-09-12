@@ -174,6 +174,10 @@
       "types": "./dist/key-value-pairs/index.d.ts",
       "import": "./dist/key-value-pairs/index.js"
     },
+    "./code-view": {
+      "types": "./dist/code-view/index.d.ts",
+      "import": "./dist/code-view/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"
