@@ -1,6 +1,6 @@
 # MeowKit React Library
 
-Official MeowKit React UI library (Phase 1 foundation + Phase 2 primitives).
+Official MeowKit React UI library (Phase 1 foundation + Phase 2 primitives + Phase 3 layout).
 
 See `docs/superpowers/specs/2026-09-13-meowkit-react-ui-library-design.md`.
 
@@ -62,7 +62,7 @@ createRoot(document.getElementById('root')!).render(
 
 ## Components
 
-Path imports from `@meowkit/components/<name>`. Storybook titles live under `Primitives/*`.
+Path imports from `@meowkit/components/<name>`. Storybook titles live under `Primitives/*` and `Layout/*`.
 
 | Import | Component | Storybook |
 | --- | --- | --- |
@@ -93,6 +93,20 @@ Path imports from `@meowkit/components/<name>`. Storybook titles live under `Pri
 | `@meowkit/components/popover` | Popover | `Primitives/Popover` |
 | `@meowkit/components/tooltip` | Tooltip | `Primitives/Tooltip` |
 | `@meowkit/components/flashbar` | Flashbar | `Primitives/Flashbar` |
+| `@meowkit/components/box` | Box | `Layout/Box` |
+| `@meowkit/components/space-between` | SpaceBetween | `Layout/SpaceBetween` |
+| `@meowkit/components/grid` | Grid | `Layout/Grid` |
+| `@meowkit/components/column-layout` | ColumnLayout | `Layout/ColumnLayout` |
+| `@meowkit/components/container` | Container | `Layout/Container` |
+| `@meowkit/components/header` | Header | `Layout/Header` |
+| `@meowkit/components/footer` | Footer | `Layout/Footer` |
+| `@meowkit/components/sidebar` | Sidebar | `Layout/Sidebar` |
+| `@meowkit/components/toolbar` | Toolbar | `Layout/Toolbar` |
+| `@meowkit/components/status-bar` | StatusBar | `Layout/StatusBar` |
+| `@meowkit/components/breadcrumb` | Breadcrumb | `Layout/Breadcrumb` |
+| `@meowkit/components/pagination` | Pagination | `Layout/Pagination` |
+| `@meowkit/components/app-layout` | AppLayout | `Layout/AppLayout` |
+| `@meowkit/components/icon` | Icon | `Primitives/Icon` |
 
 Multiselect is deferred to a later phase (Companion does not need multi chip select yet).
 
@@ -100,7 +114,7 @@ Refresh README images after `pnpm build` with `node scripts/capture-screenshots.
 
 ## Screenshots
 
-Button, Input, Modal, Alert, and app chrome atoms (Badge, Tag, Link, Spinner, ProgressBar) captured from compiled library CSS.
+Button, Input, Modal, Alert, app chrome atoms (Badge, Tag, Link, Spinner, ProgressBar), AppLayout shell, and Container+Header captured from compiled library CSS.
 
 ![Button](docs/images/button.png)
 
@@ -111,3 +125,7 @@ Button, Input, Modal, Alert, and app chrome atoms (Badge, Tag, Link, Spinner, Pr
 ![Alert](docs/images/alert.png)
 
 ![App chrome](docs/images/chrome.png)
+
+![AppLayout](docs/images/app-layout.png)
+
+![Container](docs/images/container.png)

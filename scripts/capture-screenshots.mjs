@@ -58,6 +58,10 @@ const tagCss = readCss('tag');
 const linkCss = readCss('link');
 const spinnerCss = readCss('spinner');
 const progressCss = readCss('progress-bar');
+const appLayoutCss = readCss('app-layout');
+const containerCss = readCss('container');
+const headerCss = readCss('header');
+const statusBarCss = readCss('status-bar');
 
 const button = {
   root: hashedClass(buttonCss, 'styles_root'),
@@ -113,6 +117,63 @@ const progress = {
   track: hashedClass(progressCss, 'styles_track'),
   fill: hashedClass(progressCss, 'styles_fill'),
 };
+const appLayout = {
+  root: hashedClass(appLayoutCss, 'styles_root'),
+  chrome: hashedClass(appLayoutCss, 'styles_chrome'),
+  toolsToggle: hashedClass(appLayoutCss, 'styles_toolsToggle'),
+  toggle: hashedClass(appLayoutCss, 'styles_toggle'),
+  body: hashedClass(appLayoutCss, 'styles_body'),
+  navigation: hashedClass(appLayoutCss, 'styles_navigation'),
+  tools: hashedClass(appLayoutCss, 'styles_tools'),
+  main: hashedClass(appLayoutCss, 'styles_main'),
+  contentHeader: hashedClass(appLayoutCss, 'styles_contentHeader'),
+  content: hashedClass(appLayoutCss, 'styles_content'),
+  statusBar: hashedClass(appLayoutCss, 'styles_statusBar'),
+};
+const container = {
+  root: hashedClass(containerCss, 'styles_root'),
+  default: hashedClass(containerCss, 'styles_default'),
+  header: hashedClass(containerCss, 'styles_header'),
+  content: hashedClass(containerCss, 'styles_content'),
+  contentPadded: hashedClass(containerCss, 'styles_contentPadded'),
+};
+const header = {
+  root: hashedClass(headerCss, 'styles_root'),
+  main: hashedClass(headerCss, 'styles_main'),
+  heading: hashedClass(headerCss, 'styles_heading'),
+  headingH1: hashedClass(headerCss, 'styles_headingH1'),
+  headingH2: hashedClass(headerCss, 'styles_headingH2'),
+  counter: hashedClass(headerCss, 'styles_counter'),
+  actions: hashedClass(headerCss, 'styles_actions'),
+  description: hashedClass(headerCss, 'styles_description'),
+};
+const statusBar = {
+  root: hashedClass(statusBarCss, 'styles_root'),
+  left: hashedClass(statusBarCss, 'styles_left'),
+  main: hashedClass(statusBarCss, 'styles_main'),
+  right: hashedClass(statusBarCss, 'styles_right'),
+};
+
+const containerPanel = `
+      <div class="${container.root} ${container.default}">
+        <div class="${container.header}">
+          <div class="${header.root}">
+            <div class="${header.main}">
+              <h2 class="${header.heading} ${header.headingH2}">
+                Devices
+                <span class="${header.counter}">(3)</span>
+              </h2>
+              <div class="${header.actions}">
+                <button type="button" class="${button.root} ${button.primary}">Edit</button>
+              </div>
+            </div>
+            <div class="${header.description}">Connected serial ports and flash targets.</div>
+          </div>
+        </div>
+        <div class="${container.content} ${container.contentPadded}">
+          Primary content sits inside a bordered surface panel.
+        </div>
+      </div>`;
 
 const shots = [
   {
@@ -204,6 +265,57 @@ const shots = [
       </div>`,
       [badgeCss, tagCss, linkCss, spinnerCss, progressCss],
     ),
+  },
+  {
+    file: 'app-layout.png',
+    size: { width: 1100, height: 560 },
+    html: pageHtml(
+      `<div class="${appLayout.root}">
+        <div class="${appLayout.chrome}">
+          <button type="button" class="${appLayout.toggle}" aria-expanded="true" aria-label="Close navigation">‹</button>
+          <button type="button" class="${appLayout.toggle} ${appLayout.toolsToggle}" aria-expanded="true" aria-label="Close tools">›</button>
+        </div>
+        <div class="${appLayout.body}">
+          <aside class="${appLayout.navigation}" aria-label="Navigation" data-open="true">
+            <div class="panel">
+              <strong>Workspace</strong>
+              <div>Devices</div>
+              <div>Settings</div>
+            </div>
+          </aside>
+          <main class="${appLayout.main}">
+            <div class="${appLayout.contentHeader}">
+              <div class="${header.root}">
+                <div class="${header.main}">
+                  <h1 class="${header.heading} ${header.headingH1}">Companion</h1>
+                </div>
+                <div class="${header.description}">Cloudscape-inspired application shell</div>
+              </div>
+            </div>
+            <div class="${appLayout.content}">${containerPanel}</div>
+          </main>
+          <aside class="${appLayout.tools}" aria-label="Tools" data-open="true">
+            <div class="panel">Inspector, logs, and device details.</div>
+          </aside>
+        </div>
+        <div class="${appLayout.statusBar}">
+          <div role="status" class="${statusBar.root}">
+            <div class="${statusBar.left}">COM3</div>
+            <div class="${statusBar.main}">Ready</div>
+            <div class="${statusBar.right}">Connected</div>
+          </div>
+        </div>
+      </div>`,
+      [buttonCss, appLayoutCss, containerCss, headerCss, statusBarCss],
+      `.preview { padding: 0; min-height: 100vh; }
+       .${appLayout.root} { height: 100vh; }
+       .panel { padding: 16px; }`,
+    ),
+  },
+  {
+    file: 'container.png',
+    size: { width: 800, height: 280 },
+    html: pageHtml(containerPanel, [buttonCss, containerCss, headerCss]),
   },
 ];
 
