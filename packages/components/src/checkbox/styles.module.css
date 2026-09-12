@@ -1,0 +1,32 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mk-space-2);
+  font-family: var(--mk-font-family-sans);
+  font-size: var(--mk-font-size-sm);
+  line-height: var(--mk-line-height-normal);
+  color: var(--mk-color-text);
+  cursor: pointer;
+}
+
+.root:has(.control:disabled) {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.control {
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--mk-color-primary);
+  cursor: inherit;
+}
+
+.control:focus-visible {
+  outline: 2px solid var(--mk-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.label {
+  font-weight: var(--mk-font-weight-medium);
+}
