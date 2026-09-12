@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+html {
+  font-family: var(--mk-font-family-sans);
+  font-size: var(--mk-font-size-md);
+  line-height: var(--mk-line-height-normal);
+  color: var(--mk-color-text);
+  background: var(--mk-color-background);
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--mk-font-family-mono);
+}
