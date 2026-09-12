@@ -7,6 +7,7 @@ const buttonJsPath = 'dist/button/index.js';
 export default defineConfig({
   entry: {
     'button/index': 'src/button/index.tsx',
+    'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
   dts: true,

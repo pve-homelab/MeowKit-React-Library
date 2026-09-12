@@ -7,6 +7,10 @@
     "./button": {
       "types": "./dist/button/index.d.ts",
       "import": "./dist/button/index.js"
+    },
+    "./provider": {
+      "types": "./dist/provider/index.d.ts",
+      "import": "./dist/provider/index.js"
     }
   },
   "files": ["dist"],
