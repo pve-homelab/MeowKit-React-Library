@@ -58,6 +58,14 @@
       "types": "./dist/button-dropdown/index.d.ts",
       "import": "./dist/button-dropdown/index.js"
     },
+    "./tabs": {
+      "types": "./dist/tabs/index.d.ts",
+      "import": "./dist/tabs/index.js"
+    },
+    "./segmented-control": {
+      "types": "./dist/segmented-control/index.d.ts",
+      "import": "./dist/segmented-control/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"

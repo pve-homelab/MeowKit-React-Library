@@ -32,6 +32,8 @@ export default defineConfig({
     'slider/index': 'src/slider/index.tsx',
     'select/index': 'src/select/index.tsx',
     'button-dropdown/index': 'src/button-dropdown/index.tsx',
+    'tabs/index': 'src/tabs/index.tsx',
+    'segmented-control/index': 'src/segmented-control/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
