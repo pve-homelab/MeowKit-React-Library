@@ -31,6 +31,7 @@ export default defineConfig({
     'radio-group/index': 'src/radio-group/index.tsx',
     'slider/index': 'src/slider/index.tsx',
     'select/index': 'src/select/index.tsx',
+    'button-dropdown/index': 'src/button-dropdown/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
