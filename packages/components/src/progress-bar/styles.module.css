@@ -1,0 +1,34 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mk-space-1);
+  width: 100%;
+  font-family: var(--mk-font-family-sans);
+  font-size: var(--mk-font-size-sm);
+  line-height: var(--mk-line-height-normal);
+  color: var(--mk-color-text);
+}
+
+.label {
+  font-weight: var(--mk-font-weight-medium);
+}
+
+.description {
+  color: var(--mk-color-text-muted);
+}
+
+.track {
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  border-radius: var(--mk-radius-full);
+  background: var(--mk-color-surface-muted);
+}
+
+.fill {
+  height: 100%;
+  width: var(--mk-progress-value, 0%);
+  border-radius: inherit;
+  background: var(--mk-color-primary);
+  transition: width var(--mk-motion-medium) var(--mk-motion-easing-default);
+}

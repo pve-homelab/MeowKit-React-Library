@@ -1,0 +1,30 @@
+.root {
+  font-family: var(--mk-font-family-sans);
+  font-size: var(--mk-font-size-sm);
+  font-weight: var(--mk-font-weight-medium);
+  line-height: var(--mk-line-height-normal);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.root:focus-visible {
+  outline: 2px solid var(--mk-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.primary {
+  color: var(--mk-color-primary);
+}
+
+.primary:hover {
+  color: var(--mk-color-primary-hover);
+}
+
+.secondary {
+  color: var(--mk-color-text-muted);
+}
+
+.secondary:hover {
+  color: var(--mk-color-text);
+}

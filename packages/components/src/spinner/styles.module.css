@@ -1,0 +1,35 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  box-sizing: border-box;
+  display: block;
+  border: 2px solid var(--mk-color-border);
+  border-top-color: var(--mk-color-primary);
+  border-radius: var(--mk-radius-full);
+  animation: mk-spin calc(var(--mk-motion-slow) * 6) linear infinite;
+}
+
+.sm .circle {
+  width: 12px;
+  height: 12px;
+}
+
+.md .circle {
+  width: 20px;
+  height: 20px;
+}
+
+.lg .circle {
+  width: 32px;
+  height: 32px;
+}
+
+@keyframes mk-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
