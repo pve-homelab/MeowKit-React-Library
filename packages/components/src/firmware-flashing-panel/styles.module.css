@@ -1,0 +1,23 @@
+.status {
+  display: flex;
+  align-items: center;
+  gap: var(--mk-space-2);
+  margin-bottom: var(--mk-space-3);
+  font-family: var(--mk-font-family-sans);
+  font-size: var(--mk-font-size-sm);
+  line-height: var(--mk-line-height-normal);
+}
+
+.error {
+  margin-bottom: var(--mk-space-3);
+}
+
+.device {
+  margin-bottom: var(--mk-space-3);
+  font-family: var(--mk-font-family-sans);
+  font-size: var(--mk-font-size-sm);
+}
+
+.progress {
+  margin-bottom: var(--mk-space-3);
+}

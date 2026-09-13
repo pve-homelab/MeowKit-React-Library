@@ -71,6 +71,8 @@ export default defineConfig({
     'build-output-panel/index': 'src/build-output-panel/index.tsx',
     'serial-console-view/index': 'src/serial-console-view/index.tsx',
     'storage-manager-view/index': 'src/storage-manager-view/index.tsx',
+    'device-manager-panel/index': 'src/device-manager-panel/index.tsx',
+    'firmware-flashing-panel/index': 'src/firmware-flashing-panel/index.tsx',
   },
   format: ['esm'],
   dts: true,

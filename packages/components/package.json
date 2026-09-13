@@ -213,6 +213,14 @@
     "./storage-manager-view": {
       "types": "./dist/storage-manager-view/index.d.ts",
       "import": "./dist/storage-manager-view/index.js"
+    },
+    "./device-manager-panel": {
+      "types": "./dist/device-manager-panel/index.d.ts",
+      "import": "./dist/device-manager-panel/index.js"
+    },
+    "./firmware-flashing-panel": {
+      "types": "./dist/firmware-flashing-panel/index.d.ts",
+      "import": "./dist/firmware-flashing-panel/index.js"
     }
   },
   "files": [
