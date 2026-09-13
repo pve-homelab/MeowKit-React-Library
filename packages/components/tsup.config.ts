@@ -66,11 +66,12 @@ export default defineConfig({
     'file-explorer-tree/index': 'src/file-explorer-tree/index.tsx',
     'provider/index': 'src/provider/index.tsx',
     'monaco-theme/index': 'src/monaco-theme/index.ts',
+    'monaco-editor/index': 'src/monaco-editor/index.tsx',
   },
   format: ['esm'],
   dts: true,
   clean: true,
-  external: ['react', 'react-dom', 'react/jsx-runtime', 'monaco-editor'],
+  external: ['react', 'react-dom', 'react/jsx-runtime', 'monaco-editor', '@monaco-editor/react'],
   esbuildOptions(options) {
     options.jsx = 'automatic';
   },

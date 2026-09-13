@@ -1,0 +1,7 @@
+.root {
+  box-sizing: border-box;
+  overflow: hidden;
+  min-height: 0;
+  border: 1px solid var(--mk-color-border);
+  border-radius: var(--mk-radius-sm);
+}
