@@ -12,7 +12,7 @@ export interface MonacoEditorProps {
   language?: string;
   path?: string;
   height?: string | number;
-  options?: object;
+  options?: editor.IStandaloneEditorConstructionOptions;
   onMount?: (editor: editor.IStandaloneCodeEditor, monaco: typeof import('monaco-editor')) => void;
 }
 
