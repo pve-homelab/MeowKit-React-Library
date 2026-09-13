@@ -69,6 +69,8 @@ export default defineConfig({
     'monaco-editor/index': 'src/monaco-editor/index.tsx',
     'ide-toolbar/index': 'src/ide-toolbar/index.tsx',
     'build-output-panel/index': 'src/build-output-panel/index.tsx',
+    'serial-console-view/index': 'src/serial-console-view/index.tsx',
+    'storage-manager-view/index': 'src/storage-manager-view/index.tsx',
   },
   format: ['esm'],
   dts: true,

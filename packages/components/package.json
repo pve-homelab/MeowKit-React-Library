@@ -205,6 +205,14 @@
     "./build-output-panel": {
       "types": "./dist/build-output-panel/index.d.ts",
       "import": "./dist/build-output-panel/index.js"
+    },
+    "./serial-console-view": {
+      "types": "./dist/serial-console-view/index.d.ts",
+      "import": "./dist/serial-console-view/index.js"
+    },
+    "./storage-manager-view": {
+      "types": "./dist/storage-manager-view/index.d.ts",
+      "import": "./dist/storage-manager-view/index.js"
     }
   },
   "files": [
