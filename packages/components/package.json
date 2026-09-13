@@ -235,7 +235,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "node --max-old-space-size=8192 ./node_modules/tsup/dist/cli-default.js && node --max-old-space-size=8192 ./node_modules/typescript/bin/tsc -p tsconfig.build.json",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },

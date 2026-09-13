@@ -77,7 +77,7 @@ export default defineConfig({
     'app-marketplace-grid/index': 'src/app-marketplace-grid/index.tsx',
   },
   format: ['esm'],
-  dts: true,
+  dts: false,
   clean: true,
   external: ['react', 'react-dom', 'react/jsx-runtime', 'monaco-editor', '@monaco-editor/react'],
   esbuildOptions(options) {
