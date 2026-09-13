@@ -67,6 +67,8 @@ export default defineConfig({
     'provider/index': 'src/provider/index.tsx',
     'monaco-theme/index': 'src/monaco-theme/index.ts',
     'monaco-editor/index': 'src/monaco-editor/index.tsx',
+    'ide-toolbar/index': 'src/ide-toolbar/index.tsx',
+    'build-output-panel/index': 'src/build-output-panel/index.tsx',
   },
   format: ['esm'],
   dts: true,

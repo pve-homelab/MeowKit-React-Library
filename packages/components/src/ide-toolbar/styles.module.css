@@ -1,0 +1,10 @@
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--mk-space-2);
+  flex: 0 0 auto;
+}
+
+.extra {
+  min-width: 0;
+}

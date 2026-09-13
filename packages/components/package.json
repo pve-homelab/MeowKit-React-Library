@@ -197,6 +197,14 @@
     "./monaco-editor": {
       "types": "./dist/monaco-editor/index.d.ts",
       "import": "./dist/monaco-editor/index.js"
+    },
+    "./ide-toolbar": {
+      "types": "./dist/ide-toolbar/index.d.ts",
+      "import": "./dist/ide-toolbar/index.js"
+    },
+    "./build-output-panel": {
+      "types": "./dist/build-output-panel/index.d.ts",
+      "import": "./dist/build-output-panel/index.js"
     }
   },
   "files": [
