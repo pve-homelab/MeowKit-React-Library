@@ -12,7 +12,37 @@ See `docs/superpowers/specs/2026-09-13-meowkit-react-ui-library-design.md`.
 
 ## Examples
 
-`examples/companion-ide` is a Vite app that composes the Companion IDE shell (AppLayout, FileExplorerTree, MonacoEditor, build/serial panels) with mock state only. Run `pnpm --filter=@meowkit/example-companion-ide dev` after `pnpm build`.
+### Consume like a Companion App
+
+[`examples/companion-ide`](examples/companion-ide) is a Vite + React workspace app that shows how to compose the Companion IDE shell with MeowKit path imports and mock state only (no WebSerial, WebUSB, or flash backends in the library).
+
+It wires:
+
+- `MeowKitProvider`, `AppLayout`, `Sidebar`, and `FileExplorerTree` for navigation
+- `IDEToolbar` and `MonacoEditor` for the main editor surface
+- `BuildOutputPanel` and `SerialConsoleView` in the tools drawer
+- `StatusBar` with a mock connect/disconnect toggle
+
+Install Monaco peers in your app when you use `@meowkit/components/monaco-editor` (the example already includes them):
+
+```bash
+npx pnpm@9.15.0 add monaco-editor @monaco-editor/react
+```
+
+Run the example after building workspace packages:
+
+```bash
+pnpm build
+pnpm --filter=@meowkit/example-companion-ide dev
+```
+
+Production build:
+
+```bash
+pnpm --filter=@meowkit/example-companion-ide build
+```
+
+Use `examples/companion-ide/src/App.tsx` as a starting point for your own Companion App — swap mock handlers for real device I/O in your host app, not inside `@meowkit/components`.
 
 ## Quick start
 
@@ -64,20 +94,54 @@ createRoot(document.getElementById('root')!).render(
 
 `pnpm smoke` asserts compiled `dist` exports for every `@meowkit/components` public entry and that Button CSS is emitted. It does not rebuild — run `pnpm build` first.
 
+## CI
+
+Pull requests and pushes to `main` and `feat/**` run [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
+
+1. `pnpm install --frozen-lockfile`
+2. `pnpm build` (Node heap raised to 8192 MB for declaration emit)
+3. `pnpm test`
+4. `pnpm typecheck`
+5. `pnpm smoke`
+
+Storybook static docs deploy to GitHub Pages from [`.github/workflows/storybook.yml`](.github/workflows/storybook.yml) on pushes to `main` (requires Pages enabled on the repository).
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full contributor workflow.
+
 ## Releases (Changesets)
 
 Public packages (`@meowkit/design-tokens`, `@meowkit/global-styles`, `@meowkit/components`) version together with [Changesets](https://github.com/changesets/changesets). `@meowkit/storybook` is private and ignored.
 
+Contributors record intent with a changeset:
+
 ```bash
 npx pnpm@9.15.0 changeset
+```
+
+Maintainers apply pending changesets and bump versions:
+
+```bash
 npx pnpm@9.15.0 version-packages
 ```
 
 `changeset` records a bump for one or more public packages. `version-packages` applies pending changesets, bumps versions, and updates changelogs.
 
+Publishing is automated on pushes to `main` via [`.github/workflows/release.yml`](.github/workflows/release.yml) using [`changesets/action`](https://github.com/changesets/action). The workflow needs a repository secret **`NPM_TOKEN`** with publish access to the `@meowkit` scope. Without `NPM_TOKEN`, version PRs can still be created but packages will not publish to npm.
+
 ## Accessibility
 
-Critical primitives (Button, Input, Modal, Alert, Checkbox, Tabs) have automated axe checks in `packages/components/src/a11y/critical.a11y.test.tsx`. FormField injects `aria-describedby` onto a single labeled child so description and error text are announced. Multiselect uses a combobox trigger and an `aria-multiselectable` listbox.
+Critical primitives (Button, Input, Modal, Alert, Checkbox, Tabs) have automated axe checks in `packages/components/src/a11y/critical.a11y.test.tsx`.
+
+Companion/IDE panels used in the example app have axe coverage in `packages/components/src/a11y/companion.a11y.test.tsx`:
+
+- **IDEToolbar** — toolbar landmark and action buttons when handlers are provided
+- **FileExplorerTree** — tree with folder and file nodes
+- **SerialConsoleView** — connected output region and send control
+- **DeviceManagerPanel** — idle status with a device row
+
+FormField injects `aria-describedby` onto a single labeled child so description and error text are announced. Select and Multiselect forward `aria-describedby` to their combobox triggers. Multiselect uses an `aria-multiselectable` listbox.
+
+`IDEToolbar` renders Save / Build / Flash / Run only when the matching callback prop is defined, so action buttons are not shown without behavior.
 
 ## Monaco editor (optional peers)
 
@@ -92,9 +156,26 @@ npx pnpm@9.15.0 add monaco-editor @monaco-editor/react
 | `monaco-editor` | Theme registration and the editor wrapper |
 | `@monaco-editor/react` | `MonacoEditor` wrapper only |
 
-`registerMeowKitMonacoTheme(monaco, { mode, accent })` maps MeowKit tokens to a Monaco theme named `meowkit-<mode>-<accent>`. `MonacoEditor` registers and applies that theme on mount from the current `MeowKitProvider` mode/accent. Storybook’s Monaco story is docs-only so Storybook does not bundle the editor.
+`registerMeowKitMonacoTheme(monaco, { mode, accent })` maps MeowKit tokens to a Monaco theme named `meowkit-<mode>-<accent>`. `MonacoEditor` registers and applies that theme on mount from the current `MeowKitProvider` mode/accent.
+
+Storybook includes a **live** Monaco story at **`Patterns/MonacoEditor/Live`** (Storybook id `patterns-monacoeditor--live`) when `monaco-editor` and `@monaco-editor/react` are installed in the Storybook app. A docs-only **`DocsOnly`** story shows the import snippet without bundling the editor.
 
 Companion/IDE panels (`IDEToolbar`, `BuildOutputPanel`, `SerialConsoleView`, `StorageManagerView`, `DeviceManagerPanel`, `FirmwareFlashingPanel`, `AppMarketplaceGrid`) are presentational. They expose callbacks only — the library does not call WebSerial, WebUSB, or flash APIs.
+
+## Fonts and CSP
+
+`@meowkit/global-styles` imports Inter from Google Fonts in `packages/global-styles/src/base.css`:
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+```
+
+If your Companion App uses a strict Content-Security-Policy, allow:
+
+- `style-src` / `style-src-elem`: `https://fonts.googleapis.com`
+- `font-src`: `https://fonts.gstatic.com`
+
+Alternatively, self-host Inter and remove or replace the `@import`. Offline or air-gapped deployments should self-host; bundled self-hosted fonts are not included in v1.
 
 ## Components
 
@@ -150,7 +231,7 @@ Path imports from `@meowkit/components/<name>`. Storybook titles live under `Pri
 | `@meowkit/components/table` | Table | `Patterns/Table` |
 | `@meowkit/components/file-explorer-tree` | FileExplorerTree | `Patterns/FileExplorerTree` |
 | `@meowkit/components/monaco-theme` | `registerMeowKitMonacoTheme` | — |
-| `@meowkit/components/monaco-editor` | MonacoEditor | `Patterns/MonacoEditor` |
+| `@meowkit/components/monaco-editor` | MonacoEditor | `Patterns/MonacoEditor` (`Live`, `DocsOnly`) |
 | `@meowkit/components/ide-toolbar` | IDEToolbar | `Patterns/IDEToolbar` |
 | `@meowkit/components/build-output-panel` | BuildOutputPanel | `Patterns/BuildOutputPanel` |
 | `@meowkit/components/serial-console-view` | SerialConsoleView | `Patterns/SerialConsoleView` |
