@@ -82,6 +82,9 @@ const ideToolbarCss = cssSection(readCss('ide-toolbar'), 'src/ide-toolbar/styles
 const toolbarCss = readCss('toolbar');
 const checkboxCss = readCss('checkbox');
 const spaceBetweenCss = readCss('space-between');
+const multiselectBundleCss = readCss('multiselect');
+const fieldChromeCss = cssSection(multiselectBundleCss, 'src/shared/field-chrome.module.css');
+const multiselectCss = cssSection(multiselectBundleCss, 'src/multiselect/styles.module.css');
 
 const button = {
   root: hashedClass(buttonCss, 'styles_root'),
@@ -224,6 +227,19 @@ const spaceBetween = {
   root: hashedClass(spaceBetweenCss, 'styles_root'),
   horizontal: hashedClass(spaceBetweenCss, 'styles_horizontal'),
   sizeXs: hashedClass(spaceBetweenCss, 'styles_sizeXs'),
+};
+const buttonIcon = hashedClass(buttonCss, 'styles_icon');
+const tagDismiss = hashedClass(tagCss, 'styles_dismiss');
+const multiselect = {
+  root: hashedClass(multiselectCss, 'styles_root'),
+  field: hashedClass(multiselectCss, 'styles_field'),
+  chrome: hashedClass(fieldChromeCss, 'field_chrome_field'),
+  tokens: hashedClass(multiselectCss, 'styles_tokens'),
+  chip: hashedClass(multiselectCss, 'styles_chip'),
+  toggle: hashedClass(multiselectCss, 'styles_toggle'),
+  listbox: hashedClass(multiselectCss, 'styles_listbox'),
+  option: hashedClass(multiselectCss, 'styles_option'),
+  check: hashedClass(multiselectCss, 'styles_check'),
 };
 
 function iconMarkup(name, paths) {
@@ -595,6 +611,31 @@ const shots = [
       </div>`,
       [buttonCss, toolbarCss, ideToolbarCss],
       `.preview { padding: 0; }`,
+    ),
+  },
+  {
+    file: 'multiselect.png',
+    size: { width: 720, height: 300 },
+    html: pageHtml(
+      `<div class="${multiselect.root} field">
+        <div class="${multiselect.chrome} ${multiselect.field}">
+          <div class="${multiselect.tokens}">
+            <span class="${multiselect.chip}">
+              <span class="${tag.root}"><span class="${tag.label}">Pico W</span><button type="button" class="${tagDismiss}" aria-label="Remove Pico W">×</button></span>
+            </span>
+            <span class="${multiselect.chip}">
+              <span class="${tag.root}"><span class="${tag.label}">ESP32</span><button type="button" class="${tagDismiss}" aria-label="Remove ESP32">×</button></span>
+            </span>
+          </div>
+          <button type="button" class="${button.root} ${buttonIcon} ${multiselect.toggle}" role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-label="Boards">▾</button>
+        </div>
+        <ul role="listbox" aria-multiselectable="true" aria-label="Boards" class="${multiselect.listbox}">
+          <li role="option" aria-selected="true" class="${multiselect.option}"><span class="${multiselect.check}">✓</span>Pico W</li>
+          <li role="option" aria-selected="true" data-highlighted="true" class="${multiselect.option}"><span class="${multiselect.check}">✓</span>ESP32</li>
+          <li role="option" aria-selected="false" class="${multiselect.option}"><span class="${multiselect.check}"></span>nRF52840</li>
+        </ul>
+      </div>`,
+      [buttonCss, tagCss, fieldChromeCss, multiselectCss],
     ),
   },
 ];

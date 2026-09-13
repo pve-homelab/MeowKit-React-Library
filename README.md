@@ -1,6 +1,6 @@
 # MeowKit React Library
 
-Official MeowKit React UI library (Phase 1 foundation + Phase 2 primitives + Phase 3 layout + Phase 4 patterns + Phase 5 Monaco + Phase 6 Companion panels).
+Official MeowKit React UI library (Phase 1 foundation + Phase 2 primitives + Phase 3 layout + Phase 4 patterns + Phase 5 Monaco + Phase 6 Companion panels + Phase 7 hardening).
 
 See `docs/superpowers/specs/2026-09-13-meowkit-react-ui-library-design.md`.
 
@@ -60,6 +60,21 @@ createRoot(document.getElementById('root')!).render(
 
 `pnpm smoke` asserts compiled `dist` exports for every `@meowkit/components` public entry and that Button CSS is emitted. It does not rebuild — run `pnpm build` first.
 
+## Releases (Changesets)
+
+Public packages (`@meowkit/design-tokens`, `@meowkit/global-styles`, `@meowkit/components`) version together with [Changesets](https://github.com/changesets/changesets). `@meowkit/storybook` is private and ignored.
+
+```bash
+npx pnpm@9.15.0 changeset
+npx pnpm@9.15.0 version-packages
+```
+
+`changeset` records a bump for one or more public packages. `version-packages` applies pending changesets, bumps versions, and updates changelogs.
+
+## Accessibility
+
+Critical primitives (Button, Input, Modal, Alert, Checkbox, Tabs) have automated axe checks in `packages/components/src/a11y/critical.a11y.test.tsx`. FormField injects `aria-describedby` onto a single labeled child so description and error text are announced. Multiselect uses a combobox trigger and an `aria-multiselectable` listbox.
+
 ## Monaco editor (optional peers)
 
 `@meowkit/components/monaco-theme` and `@meowkit/components/monaco-editor` treat Monaco as optional. Install both peers when you use those entries:
@@ -96,6 +111,7 @@ Path imports from `@meowkit/components/<name>`. Storybook titles live under `Pri
 | `@meowkit/components/radio-group` | RadioGroup | `Primitives/RadioGroup` |
 | `@meowkit/components/slider` | Slider | `Primitives/Slider` |
 | `@meowkit/components/select` | Select | `Primitives/Select` |
+| `@meowkit/components/multiselect` | Multiselect | `Primitives/Multiselect` |
 | `@meowkit/components/button-dropdown` | ButtonDropdown | `Primitives/ButtonDropdown` |
 | `@meowkit/components/tabs` | Tabs | `Primitives/Tabs` |
 | `@meowkit/components/segmented-control` | SegmentedControl | `Primitives/SegmentedControl` |
@@ -139,13 +155,11 @@ Path imports from `@meowkit/components/<name>`. Storybook titles live under `Pri
 | `@meowkit/components/firmware-flashing-panel` | FirmwareFlashingPanel | `Patterns/FirmwareFlashingPanel` |
 | `@meowkit/components/app-marketplace-grid` | AppMarketplaceGrid | `Patterns/AppMarketplaceGrid` |
 
-Multiselect is deferred to a later phase (Companion does not need multi chip select yet).
-
 Refresh README images after `pnpm build` with `node scripts/capture-screenshots.mjs` (Playwright + compiled MeowKit CSS).
 
 ## Screenshots
 
-Button, Input, Modal, Alert, app chrome atoms (Badge, Tag, Link, Spinner, ProgressBar), AppLayout shell, Container+Header, Table, FileExplorerTree, FirmwareFlashingPanel, AppMarketplaceGrid, and IDEToolbar captured from compiled library CSS.
+Button, Input, Modal, Alert, app chrome atoms (Badge, Tag, Link, Spinner, ProgressBar), AppLayout shell, Container+Header, Table, FileExplorerTree, FirmwareFlashingPanel, AppMarketplaceGrid, IDEToolbar, and Multiselect captured from compiled library CSS.
 
 ![Button](docs/images/button.png)
 
@@ -170,3 +184,5 @@ Button, Input, Modal, Alert, app chrome atoms (Badge, Tag, Link, Spinner, Progre
 ![AppMarketplaceGrid](docs/images/app-marketplace-grid.png)
 
 ![IDEToolbar](docs/images/ide-toolbar.png)
+
+![Multiselect](docs/images/multiselect.png)
