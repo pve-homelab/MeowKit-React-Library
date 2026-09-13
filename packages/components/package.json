@@ -221,6 +221,10 @@
     "./firmware-flashing-panel": {
       "types": "./dist/firmware-flashing-panel/index.d.ts",
       "import": "./dist/firmware-flashing-panel/index.js"
+    },
+    "./app-marketplace-grid": {
+      "types": "./dist/app-marketplace-grid/index.d.ts",
+      "import": "./dist/app-marketplace-grid/index.js"
     }
   },
   "files": [

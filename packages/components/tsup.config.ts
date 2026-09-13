@@ -73,6 +73,7 @@ export default defineConfig({
     'storage-manager-view/index': 'src/storage-manager-view/index.tsx',
     'device-manager-panel/index': 'src/device-manager-panel/index.tsx',
     'firmware-flashing-panel/index': 'src/firmware-flashing-panel/index.tsx',
+    'app-marketplace-grid/index': 'src/app-marketplace-grid/index.tsx',
   },
   format: ['esm'],
   dts: true,
