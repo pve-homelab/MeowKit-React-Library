@@ -1,6 +1,6 @@
 # MeowKit React Library
 
-Official MeowKit React UI library (Phase 1 foundation + Phase 2 primitives + Phase 3 layout + Phase 4 patterns).
+Official MeowKit React UI library (Phase 1 foundation + Phase 2 primitives + Phase 3 layout + Phase 4 patterns + Phase 5 Monaco + Phase 6 Companion panels).
 
 See `docs/superpowers/specs/2026-09-13-meowkit-react-ui-library-design.md`.
 
@@ -60,6 +60,23 @@ createRoot(document.getElementById('root')!).render(
 
 `pnpm smoke` asserts compiled `dist` exports for every `@meowkit/components` public entry and that Button CSS is emitted. It does not rebuild — run `pnpm build` first.
 
+## Monaco editor (optional peers)
+
+`@meowkit/components/monaco-theme` and `@meowkit/components/monaco-editor` treat Monaco as optional. Install both peers when you use those entries:
+
+```bash
+npx pnpm@9.15.0 add monaco-editor @monaco-editor/react
+```
+
+| Peer | Used by |
+| --- | --- |
+| `monaco-editor` | Theme registration and the editor wrapper |
+| `@monaco-editor/react` | `MonacoEditor` wrapper only |
+
+`registerMeowKitMonacoTheme(monaco, { mode, accent })` maps MeowKit tokens to a Monaco theme named `meowkit-<mode>-<accent>`. `MonacoEditor` registers and applies that theme on mount from the current `MeowKitProvider` mode/accent. Storybook’s Monaco story is docs-only so Storybook does not bundle the editor.
+
+Companion/IDE panels (`IDEToolbar`, `BuildOutputPanel`, `SerialConsoleView`, `StorageManagerView`, `DeviceManagerPanel`, `FirmwareFlashingPanel`, `AppMarketplaceGrid`) are presentational. They expose callbacks only — the library does not call WebSerial, WebUSB, or flash APIs.
+
 ## Components
 
 Path imports from `@meowkit/components/<name>`. Storybook titles live under `Primitives/*`, `Layout/*`, and `Patterns/*`.
@@ -112,6 +129,15 @@ Path imports from `@meowkit/components/<name>`. Storybook titles live under `Pri
 | `@meowkit/components/code-view` | CodeView | `Patterns/CodeView` |
 | `@meowkit/components/table` | Table | `Patterns/Table` |
 | `@meowkit/components/file-explorer-tree` | FileExplorerTree | `Patterns/FileExplorerTree` |
+| `@meowkit/components/monaco-theme` | `registerMeowKitMonacoTheme` | — |
+| `@meowkit/components/monaco-editor` | MonacoEditor | `Patterns/MonacoEditor` |
+| `@meowkit/components/ide-toolbar` | IDEToolbar | `Patterns/IDEToolbar` |
+| `@meowkit/components/build-output-panel` | BuildOutputPanel | `Patterns/BuildOutputPanel` |
+| `@meowkit/components/serial-console-view` | SerialConsoleView | `Patterns/SerialConsoleView` |
+| `@meowkit/components/storage-manager-view` | StorageManagerView | `Patterns/StorageManagerView` |
+| `@meowkit/components/device-manager-panel` | DeviceManagerPanel | `Patterns/DeviceManagerPanel` |
+| `@meowkit/components/firmware-flashing-panel` | FirmwareFlashingPanel | `Patterns/FirmwareFlashingPanel` |
+| `@meowkit/components/app-marketplace-grid` | AppMarketplaceGrid | `Patterns/AppMarketplaceGrid` |
 
 Multiselect is deferred to a later phase (Companion does not need multi chip select yet).
 
@@ -119,7 +145,7 @@ Refresh README images after `pnpm build` with `node scripts/capture-screenshots.
 
 ## Screenshots
 
-Button, Input, Modal, Alert, app chrome atoms (Badge, Tag, Link, Spinner, ProgressBar), AppLayout shell, Container+Header, Table, and FileExplorerTree captured from compiled library CSS.
+Button, Input, Modal, Alert, app chrome atoms (Badge, Tag, Link, Spinner, ProgressBar), AppLayout shell, Container+Header, Table, FileExplorerTree, FirmwareFlashingPanel, AppMarketplaceGrid, and IDEToolbar captured from compiled library CSS.
 
 ![Button](docs/images/button.png)
 
@@ -138,3 +164,9 @@ Button, Input, Modal, Alert, app chrome atoms (Badge, Tag, Link, Spinner, Progre
 ![Table](docs/images/table.png)
 
 ![FileExplorerTree](docs/images/file-explorer-tree.png)
+
+![FirmwareFlashingPanel](docs/images/firmware-flashing-panel.png)
+
+![AppMarketplaceGrid](docs/images/app-marketplace-grid.png)
+
+![IDEToolbar](docs/images/ide-toolbar.png)

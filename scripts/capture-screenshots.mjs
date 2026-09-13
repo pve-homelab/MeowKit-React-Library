@@ -76,6 +76,12 @@ const tableCss = readCss('table');
 const fileExplorerBundleCss = readCss('file-explorer-tree');
 const fileExplorerCss = cssSection(fileExplorerBundleCss, 'src/file-explorer-tree/styles.module.css');
 const iconCss = readCss('icon');
+const firmwareCss = cssSection(readCss('firmware-flashing-panel'), 'src/firmware-flashing-panel/styles.module.css');
+const marketplaceCss = cssSection(readCss('app-marketplace-grid'), 'src/app-marketplace-grid/styles.module.css');
+const ideToolbarCss = cssSection(readCss('ide-toolbar'), 'src/ide-toolbar/styles.module.css');
+const toolbarCss = readCss('toolbar');
+const checkboxCss = readCss('checkbox');
+const spaceBetweenCss = readCss('space-between');
 
 const button = {
   root: hashedClass(buttonCss, 'styles_root'),
@@ -111,6 +117,7 @@ const badge = {
   default: hashedClass(badgeCss, 'styles_default'),
   accent: hashedClass(badgeCss, 'styles_accent'),
   success: hashedClass(badgeCss, 'styles_success'),
+  info: hashedClass(badgeCss, 'styles_info'),
 };
 const tag = {
   root: hashedClass(tagCss, 'styles_root'),
@@ -150,6 +157,7 @@ const container = {
   header: hashedClass(containerCss, 'styles_header'),
   content: hashedClass(containerCss, 'styles_content'),
   contentPadded: hashedClass(containerCss, 'styles_contentPadded'),
+  footer: hashedClass(containerCss, 'styles_footer'),
 };
 const header = {
   root: hashedClass(headerCss, 'styles_root'),
@@ -157,6 +165,7 @@ const header = {
   heading: hashedClass(headerCss, 'styles_heading'),
   headingH1: hashedClass(headerCss, 'styles_headingH1'),
   headingH2: hashedClass(headerCss, 'styles_headingH2'),
+  headingH3: hashedClass(headerCss, 'styles_headingH3'),
   counter: hashedClass(headerCss, 'styles_counter'),
   actions: hashedClass(headerCss, 'styles_actions'),
   description: hashedClass(headerCss, 'styles_description'),
@@ -187,6 +196,34 @@ const fileExplorer = {
 const icon = {
   root: hashedClass(iconCss, 'styles_root'),
   sm: hashedClass(iconCss, 'styles_sm'),
+};
+const firmware = {
+  status: hashedClass(firmwareCss, 'styles_status'),
+  device: hashedClass(firmwareCss, 'styles_device'),
+  progress: hashedClass(firmwareCss, 'styles_progress'),
+};
+const marketplace = {
+  root: hashedClass(marketplaceCss, 'styles_root'),
+  columns3: hashedClass(marketplaceCss, 'styles_columns3'),
+  card: hashedClass(marketplaceCss, 'styles_card'),
+  icon: hashedClass(marketplaceCss, 'styles_icon'),
+};
+const ideToolbar = {
+  actions: hashedClass(ideToolbarCss, 'styles_actions'),
+};
+const toolbar = {
+  root: hashedClass(toolbarCss, 'styles_root'),
+  main: hashedClass(toolbarCss, 'styles_main'),
+};
+const checkbox = {
+  root: hashedClass(checkboxCss, 'styles_root'),
+  control: hashedClass(checkboxCss, 'styles_control'),
+  label: hashedClass(checkboxCss, 'styles_label'),
+};
+const spaceBetween = {
+  root: hashedClass(spaceBetweenCss, 'styles_root'),
+  horizontal: hashedClass(spaceBetweenCss, 'styles_horizontal'),
+  sizeXs: hashedClass(spaceBetweenCss, 'styles_sizeXs'),
 };
 
 function iconMarkup(name, paths) {
@@ -432,6 +469,132 @@ const shots = [
         ${treeItem({ name: 'README.md', level: 1 })}
       </div>`,
       [iconCss, fileExplorerCss],
+    ),
+  },
+  {
+    file: 'firmware-flashing-panel.png',
+    size: { width: 800, height: 360 },
+    html: pageHtml(
+      `<div class="${container.root} ${container.default}">
+        <div class="${container.header}">
+          <div class="${header.root}">
+            <div class="${header.main}">
+              <h3 class="${header.heading} ${header.headingH3}">Firmware</h3>
+              <div class="${header.actions}">
+                <div class="${spaceBetween.root} ${spaceBetween.horizontal} ${spaceBetween.sizeXs}">
+                  <button type="button" class="${button.root} ${button.secondary}" disabled>Connect</button>
+                  <button type="button" class="${button.root} ${button.primary}" disabled>Flash</button>
+                  <button type="button" class="${button.root} ${button.destructive}">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="${container.content} ${container.contentPadded}">
+          <div role="status" data-status="busy" class="${firmware.status}">
+            <span class="${badge.root} ${badge.info}">Busy</span>
+            Busy
+          </div>
+          <div class="${firmware.device}">Pico W</div>
+          <div class="${progress.root} ${firmware.progress}" style="--mk-progress-value: 64%">
+            <div class="${progress.label}">Flash progress</div>
+            <div class="${progress.track}"><div class="${progress.fill}"></div></div>
+          </div>
+          <label class="${checkbox.root}">
+            <input type="checkbox" class="${checkbox.control}" disabled />
+            <span class="${checkbox.label}">Confirm erase</span>
+          </label>
+        </div>
+      </div>`,
+      [buttonCss, containerCss, headerCss, badgeCss, progressCss, checkboxCss, spaceBetweenCss, firmwareCss],
+    ),
+  },
+  {
+    file: 'app-marketplace-grid.png',
+    size: { width: 1100, height: 420 },
+    html: pageHtml(
+      `<div role="list" data-columns="3" class="${marketplace.root} ${marketplace.columns3}">
+        <div role="listitem" class="${marketplace.card}">
+          <div class="${container.root} ${container.default}">
+            <div class="${container.header}">
+              <div class="${header.root}">
+                <div class="${header.main}">
+                  <h3 class="${header.heading} ${header.headingH3}">Blink</h3>
+                  <div class="${header.actions}"><span class="${badge.root} ${badge.success}">Installed</span></div>
+                </div>
+                <div class="${header.description}">LED sample for Pico W.</div>
+              </div>
+            </div>
+            <div class="${container.content} ${container.contentPadded}">
+              <div class="${marketplace.icon}">💡</div>
+            </div>
+            <div class="${container.footer}">
+              <div class="${spaceBetween.root} ${spaceBetween.horizontal} ${spaceBetween.sizeXs}">
+                <button type="button" class="${button.root} ${button.primary}">Open</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div role="listitem" class="${marketplace.card}">
+          <div class="${container.root} ${container.default}">
+            <div class="${container.header}">
+              <div class="${header.root}">
+                <div class="${header.main}">
+                  <h3 class="${header.heading} ${header.headingH3}">Weather</h3>
+                </div>
+                <div class="${header.description}">Read temperature over I2C.</div>
+              </div>
+            </div>
+            <div class="${container.content} ${container.contentPadded}">
+              <div class="${marketplace.icon}">🌤</div>
+            </div>
+            <div class="${container.footer}">
+              <div class="${spaceBetween.root} ${spaceBetween.horizontal} ${spaceBetween.sizeXs}">
+                <button type="button" class="${button.root} ${button.primary}">Install</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div role="listitem" class="${marketplace.card}">
+          <div class="${container.root} ${container.default}">
+            <div class="${container.header}">
+              <div class="${header.root}">
+                <div class="${header.main}">
+                  <h3 class="${header.heading} ${header.headingH3}">Serial plot</h3>
+                </div>
+                <div class="${header.description}">Graph incoming UART data.</div>
+              </div>
+            </div>
+            <div class="${container.content} ${container.contentPadded}">
+              <div class="${marketplace.icon}">📈</div>
+            </div>
+            <div class="${container.footer}">
+              <div class="${spaceBetween.root} ${spaceBetween.horizontal} ${spaceBetween.sizeXs}">
+                <button type="button" class="${button.root} ${button.primary}">Install</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`,
+      [buttonCss, containerCss, headerCss, badgeCss, spaceBetweenCss, marketplaceCss],
+    ),
+  },
+  {
+    file: 'ide-toolbar.png',
+    size: { width: 900, height: 88 },
+    html: pageHtml(
+      `<div role="toolbar" class="${toolbar.root}">
+        <div class="${toolbar.main}">
+          <div class="${ideToolbar.actions}">
+            <button type="button" class="${button.root} ${button.secondary}">Save</button>
+            <button type="button" class="${button.root} ${button.secondary}">Build</button>
+            <button type="button" class="${button.root} ${button.secondary}">Flash</button>
+            <button type="button" class="${button.root} ${button.primary}">Run</button>
+          </div>
+        </div>
+      </div>`,
+      [buttonCss, toolbarCss, ideToolbarCss],
+      `.preview { padding: 0; }`,
     ),
   },
 ];
