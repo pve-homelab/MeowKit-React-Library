@@ -189,6 +189,10 @@
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"
+    },
+    "./monaco-theme": {
+      "types": "./dist/monaco-theme/index.d.ts",
+      "import": "./dist/monaco-theme/index.js"
     }
   },
   "files": [
@@ -200,8 +204,14 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "peerDependencies": {
+    "monaco-editor": "^0.56.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
+  },
+  "peerDependenciesMeta": {
+    "monaco-editor": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@meowkit/design-tokens": "workspace:*",
@@ -223,6 +233,7 @@
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "jsdom": "^26.0.0",
+    "monaco-editor": "^0.56.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tsup": "^8.4.0",
