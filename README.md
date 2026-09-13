@@ -1,6 +1,6 @@
 # MeowKit React Library
 
-Official MeowKit React UI library (Phase 1 foundation + Phase 2 primitives + Phase 3 layout).
+Official MeowKit React UI library (Phase 1 foundation + Phase 2 primitives + Phase 3 layout + Phase 4 patterns).
 
 See `docs/superpowers/specs/2026-09-13-meowkit-react-ui-library-design.md`.
 
@@ -62,7 +62,7 @@ createRoot(document.getElementById('root')!).render(
 
 ## Components
 
-Path imports from `@meowkit/components/<name>`. Storybook titles live under `Primitives/*` and `Layout/*`.
+Path imports from `@meowkit/components/<name>`. Storybook titles live under `Primitives/*`, `Layout/*`, and `Patterns/*`.
 
 | Import | Component | Storybook |
 | --- | --- | --- |
@@ -107,6 +107,11 @@ Path imports from `@meowkit/components/<name>`. Storybook titles live under `Pri
 | `@meowkit/components/pagination` | Pagination | `Layout/Pagination` |
 | `@meowkit/components/app-layout` | AppLayout | `Layout/AppLayout` |
 | `@meowkit/components/icon` | Icon | `Primitives/Icon` |
+| `@meowkit/components/empty-state` | EmptyState | `Patterns/EmptyState` |
+| `@meowkit/components/key-value-pairs` | KeyValuePairs | `Patterns/KeyValuePairs` |
+| `@meowkit/components/code-view` | CodeView | `Patterns/CodeView` |
+| `@meowkit/components/table` | Table | `Patterns/Table` |
+| `@meowkit/components/file-explorer-tree` | FileExplorerTree | `Patterns/FileExplorerTree` |
 
 Multiselect is deferred to a later phase (Companion does not need multi chip select yet).
 
@@ -114,7 +119,7 @@ Refresh README images after `pnpm build` with `node scripts/capture-screenshots.
 
 ## Screenshots
 
-Button, Input, Modal, Alert, app chrome atoms (Badge, Tag, Link, Spinner, ProgressBar), AppLayout shell, and Container+Header captured from compiled library CSS.
+Button, Input, Modal, Alert, app chrome atoms (Badge, Tag, Link, Spinner, ProgressBar), AppLayout shell, Container+Header, Table, and FileExplorerTree captured from compiled library CSS.
 
 ![Button](docs/images/button.png)
 
@@ -129,3 +134,7 @@ Button, Input, Modal, Alert, app chrome atoms (Badge, Tag, Link, Spinner, Progre
 ![AppLayout](docs/images/app-layout.png)
 
 ![Container](docs/images/container.png)
+
+![Table](docs/images/table.png)
+
+![FileExplorerTree](docs/images/file-explorer-tree.png)

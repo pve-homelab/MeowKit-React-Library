@@ -12,6 +12,16 @@ function readCss(entry) {
   return readFileSync(resolve(componentsDist, entry, 'index.css'), 'utf8');
 }
 
+function cssSection(css, sourcePath) {
+  const marker = `/* ${sourcePath} */`;
+  const start = css.indexOf(marker);
+  if (start === -1) {
+    return css;
+  }
+  const next = css.indexOf('\n/* src/', start + marker.length);
+  return next === -1 ? css.slice(start) : css.slice(start, next);
+}
+
 function hashedClass(css, localName) {
   const escaped = localName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const match = css.match(new RegExp(`\\.(${escaped}\\d*)(?![\\w-])`));
@@ -62,6 +72,10 @@ const appLayoutCss = readCss('app-layout');
 const containerCss = readCss('container');
 const headerCss = readCss('header');
 const statusBarCss = readCss('status-bar');
+const tableCss = readCss('table');
+const fileExplorerBundleCss = readCss('file-explorer-tree');
+const fileExplorerCss = cssSection(fileExplorerBundleCss, 'src/file-explorer-tree/styles.module.css');
+const iconCss = readCss('icon');
 
 const button = {
   root: hashedClass(buttonCss, 'styles_root'),
@@ -153,6 +167,57 @@ const statusBar = {
   main: hashedClass(statusBarCss, 'styles_main'),
   right: hashedClass(statusBarCss, 'styles_right'),
 };
+const table = {
+  root: hashedClass(tableCss, 'styles_root'),
+  container: hashedClass(tableCss, 'styles_container'),
+  table: hashedClass(tableCss, 'styles_table'),
+  header: hashedClass(tableCss, 'styles_header'),
+  sortButton: hashedClass(tableCss, 'styles_sortButton'),
+  cell: hashedClass(tableCss, 'styles_cell'),
+};
+const fileExplorer = {
+  root: hashedClass(fileExplorerCss, 'styles_root'),
+  item: hashedClass(fileExplorerCss, 'styles_item'),
+  row: hashedClass(fileExplorerCss, 'styles_row'),
+  selected: hashedClass(fileExplorerCss, 'styles_selected'),
+  chevron: hashedClass(fileExplorerCss, 'styles_chevron'),
+  name: hashedClass(fileExplorerCss, 'styles_name'),
+  group: hashedClass(fileExplorerCss, 'styles_group'),
+};
+const icon = {
+  root: hashedClass(iconCss, 'styles_root'),
+  sm: hashedClass(iconCss, 'styles_sm'),
+};
+
+function iconMarkup(name, paths) {
+  return `<span class="${icon.root} ${icon.sm}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-icon="${name}" aria-hidden="true">${paths}</svg></span>`;
+}
+
+const icons = {
+  chevronDown: iconMarkup('chevron-down', '<path d="M6 9l6 6 6-6" />'),
+  chevronRight: iconMarkup('chevron-right', '<path d="M9 6l6 6-6 6" />'),
+  folder: iconMarkup('folder', '<path d="M3 7h6l2 2h10v10H3z" />'),
+  file: iconMarkup('file', '<path d="M7 3h7l5 5v13H7z" /><path d="M14 3v5h5" />'),
+};
+
+function treeItem({ name, level, selected = false, expanded, childrenHtml = '' }) {
+  const isFolder = expanded !== undefined;
+  const ariaExpanded = isFolder ? ` aria-expanded="${expanded}"` : '';
+  const selectedClass = selected ? ` ${fileExplorer.selected}` : '';
+  const chevron = isFolder ? (expanded ? icons.chevronDown : icons.chevronRight) : '';
+  const typeIcon = isFolder ? icons.folder : icons.file;
+  const group = childrenHtml
+    ? `<div role="group" class="${fileExplorer.group}">${childrenHtml}</div>`
+    : '';
+  return `<div role="treeitem" aria-label="${name}" aria-selected="${selected}"${ariaExpanded} aria-level="${level}" class="${fileExplorer.item}${selectedClass}" style="--mk-tree-level: ${level}">
+        <span class="${fileExplorer.row}">
+          <span class="${fileExplorer.chevron}">${chevron}</span>
+          ${typeIcon}
+          <span class="${fileExplorer.name}">${name}</span>
+        </span>
+        ${group}
+      </div>`;
+}
 
 const containerPanel = `
       <div class="${container.root} ${container.default}">
@@ -316,6 +381,58 @@ const shots = [
     file: 'container.png',
     size: { width: 800, height: 280 },
     html: pageHtml(containerPanel, [buttonCss, containerCss, headerCss]),
+  },
+  {
+    file: 'table.png',
+    size: { width: 800, height: 260 },
+    html: pageHtml(
+      `<div class="${table.root} ${table.container}" data-variant="container">
+        <table class="${table.table}">
+          <thead>
+            <tr>
+              <th scope="col" class="${table.header}" aria-sort="ascending">
+                <button type="button" class="${table.sortButton}">Name</button>
+              </th>
+              <th scope="col" class="${table.header}" aria-sort="none" style="width:120px">
+                <button type="button" class="${table.sortButton}">Port</button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="${table.cell}">Alpha</td>
+              <td class="${table.cell}" style="width:120px">COM3</td>
+            </tr>
+            <tr>
+              <td class="${table.cell}">Beta</td>
+              <td class="${table.cell}" style="width:120px">COM4</td>
+            </tr>
+            <tr>
+              <td class="${table.cell}">Gamma</td>
+              <td class="${table.cell}" style="width:120px">COM5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>`,
+      [tableCss],
+    ),
+  },
+  {
+    file: 'file-explorer-tree.png',
+    size: { width: 480, height: 320 },
+    html: pageHtml(
+      `<div role="tree" class="${fileExplorer.root}">
+        ${treeItem({
+          name: 'src',
+          level: 1,
+          expanded: true,
+          childrenHtml: `${treeItem({ name: 'index.ts', level: 2, selected: true })}${treeItem({ name: 'utils.ts', level: 2 })}`,
+        })}
+        ${treeItem({ name: 'docs', level: 1, expanded: false })}
+        ${treeItem({ name: 'README.md', level: 1 })}
+      </div>`,
+      [iconCss, fileExplorerCss],
+    ),
   },
 ];
 
