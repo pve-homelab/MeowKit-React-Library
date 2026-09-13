@@ -54,6 +54,10 @@
       "types": "./dist/select/index.d.ts",
       "import": "./dist/select/index.js"
     },
+    "./multiselect": {
+      "types": "./dist/multiselect/index.d.ts",
+      "import": "./dist/multiselect/index.js"
+    },
     "./button-dropdown": {
       "types": "./dist/button-dropdown/index.d.ts",
       "import": "./dist/button-dropdown/index.js"

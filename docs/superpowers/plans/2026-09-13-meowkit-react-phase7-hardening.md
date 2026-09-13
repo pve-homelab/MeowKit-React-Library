@@ -25,7 +25,7 @@ Same as prior phases: tokens-only CSS, path imports, standard React events, `npx
 - Selected values shown as Tag chips (dismissible); trigger opens listbox (can reuse Radix DropdownMenu or combobox pattern with checkboxes). Prefer accessible listbox with `aria-multiselectable`.
 - Use existing Tag + Button for chrome.
 
-- [ ] TDD: select adds value; dismiss tag removes; onChange fires → implement → story → commit  
+- [x] TDD: select adds value; dismiss tag removes; onChange fires → implement → story → commit  
   Message: `feat(components): add Multiselect`
 
 ---
