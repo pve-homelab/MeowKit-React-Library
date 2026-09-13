@@ -182,6 +182,10 @@
       "types": "./dist/table/index.d.ts",
       "import": "./dist/table/index.js"
     },
+    "./file-explorer-tree": {
+      "types": "./dist/file-explorer-tree/index.d.ts",
+      "import": "./dist/file-explorer-tree/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"

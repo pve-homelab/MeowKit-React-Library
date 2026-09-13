@@ -63,6 +63,7 @@ export default defineConfig({
     'key-value-pairs/index': 'src/key-value-pairs/index.tsx',
     'code-view/index': 'src/code-view/index.tsx',
     'table/index': 'src/table/index.tsx',
+    'file-explorer-tree/index': 'src/file-explorer-tree/index.tsx',
     'provider/index': 'src/provider/index.tsx',
   },
   format: ['esm'],
