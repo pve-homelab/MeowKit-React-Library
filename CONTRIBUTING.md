@@ -92,11 +92,11 @@ pnpm --filter=@meowkit/example-companion-ide dev
 
 See `examples/companion-ide/` and the README “Consume like a Companion App” section.
 
-## Changesets and releases
+## Versioning (Changesets)
 
-Public packages version together with [Changesets](https://github.com/changesets/changesets). `@meowkit/storybook` is private and ignored.
+Public packages can version together with [Changesets](https://github.com/changesets/changesets). `@meowkit/storybook` is private and ignored.
 
-When your PR includes a user-facing change to a public package:
+This repo is primarily consumed from GitHub. npm publish is optional. When your PR includes a user-facing change to a public package and you want a changelog entry:
 
 1. Add a changeset:
 
@@ -104,18 +104,14 @@ When your PR includes a user-facing change to a public package:
 pnpm changeset
 ```
 
-2. Select the affected packages (`@meowkit/design-tokens`, `@meowkit/global-styles`, `@meowkit/components`) and choose semver bump (patch/minor/major).
+2. Select the affected packages and choose a semver bump (patch/minor/major).
 3. Write a short summary for the changelog.
 
-Maintainers run `pnpm version-packages` on the release PR to apply pending changesets, bump versions, and update changelogs.
-
-Publishing is automated on pushes to `main` via `.github/workflows/release.yml` using `changesets/action`. npm publish requires a repository secret **`NPM_TOKEN`** with publish access to the `@meowkit` scope. Without it, the workflow can still open version PRs but will not publish.
-
-Do not publish manually from a contributor machine unless you are explicitly performing a release with valid credentials.
+Maintainers run `pnpm version-packages` to apply pending changesets. Registry publish via `.github/workflows/release.yml` only runs when an **`NPM_TOKEN`** secret is configured.
 
 ## CI
 
-Pull requests and pushes to `main` / `feat/**` run `.github/workflows/ci.yml`:
+Pull requests and pushes to `main` run `.github/workflows/ci.yml`:
 
 1. `pnpm install --frozen-lockfile`
 2. `pnpm build` (with raised heap)
@@ -123,7 +119,7 @@ Pull requests and pushes to `main` / `feat/**` run `.github/workflows/ci.yml`:
 4. `pnpm typecheck`
 5. `pnpm smoke`
 
-Keep PRs green before merge. Storybook Pages deploy and npm release run on separate workflows when changes land on `main`.
+Keep PRs green before merge. Storybook Pages deploy runs on a separate workflow when changes land on `main`.
 
 ## Conventions
 
@@ -132,7 +128,7 @@ Keep PRs green before merge. Storybook Pages deploy and npm release run on separ
 - Monaco peers (`monaco-editor`, `@monaco-editor/react`) are optional — only required for Monaco entries and IDE examples.
 - Companion/IDE panels are presentational: expose callbacks only; no WebSerial, WebUSB, flash, or filesystem I/O inside the library.
 - Match existing test patterns (Vitest + Testing Library + jest-axe for a11y).
-- Commit after each logical task; do not force-push shared branches unless asked.
+- Prefer small, reviewable commits; do not force-push shared branches unless asked.
 
 ## Fonts and CSP
 

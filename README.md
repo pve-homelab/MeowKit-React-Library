@@ -1,14 +1,16 @@
 # MeowKit React Library
 
-Official MeowKit React UI library (Phase 1 foundation + Phase 2 primitives + Phase 3 layout + Phase 4 patterns + Phase 5 Monaco + Phase 6 Companion panels + Phase 7 hardening).
+Official MeowKit React UI library for Companion App and IDE surfaces — design tokens, accessible components, Storybook docs, and presentational Monaco/Companion panels.
 
-See `docs/superpowers/specs/2026-09-13-meowkit-react-ui-library-design.md`.
+Design overview: [`docs/design.md`](docs/design.md).
 
 ## Packages
 
 - `@meowkit/design-tokens`
 - `@meowkit/global-styles`
 - `@meowkit/components`
+
+This repository is intended for public GitHub consumption (workspace / git dependency). npm registry publishing is optional and not required to use the library.
 
 ## Examples
 
@@ -96,7 +98,7 @@ createRoot(document.getElementById('root')!).render(
 
 ## CI
 
-Pull requests and pushes to `main` and `feat/**` run [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
+Pull requests and pushes to `main` run [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
 
 1. `pnpm install --frozen-lockfile`
 2. `pnpm build` (Node heap raised to 8192 MB for declaration emit)
@@ -108,25 +110,20 @@ Storybook static docs deploy to GitHub Pages from [`.github/workflows/storybook.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the full contributor workflow.
 
-## Releases (Changesets)
+## Versioning (Changesets)
 
-Public packages (`@meowkit/design-tokens`, `@meowkit/global-styles`, `@meowkit/components`) version together with [Changesets](https://github.com/changesets/changesets). `@meowkit/storybook` is private and ignored.
+Public packages (`@meowkit/design-tokens`, `@meowkit/global-styles`, `@meowkit/components`) can version together with [Changesets](https://github.com/changesets/changesets). `@meowkit/storybook` is private and ignored.
 
-Contributors record intent with a changeset:
+For most consumers of this public repo, clone or add a git/workspace dependency and run `pnpm build` — you do not need npm publish.
+
+If you later publish to npm:
 
 ```bash
 npx pnpm@9.15.0 changeset
-```
-
-Maintainers apply pending changesets and bump versions:
-
-```bash
 npx pnpm@9.15.0 version-packages
 ```
 
-`changeset` records a bump for one or more public packages. `version-packages` applies pending changesets, bumps versions, and updates changelogs.
-
-Publishing is automated on pushes to `main` via [`.github/workflows/release.yml`](.github/workflows/release.yml) using [`changesets/action`](https://github.com/changesets/action). The workflow needs a repository secret **`NPM_TOKEN`** with publish access to the `@meowkit` scope. Without `NPM_TOKEN`, version PRs can still be created but packages will not publish to npm.
+[`.github/workflows/release.yml`](.github/workflows/release.yml) can create version PRs / publish when an **`NPM_TOKEN`** secret is configured. Without it, the release workflow is inert for registry publish.
 
 ## Accessibility
 

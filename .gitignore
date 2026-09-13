@@ -6,3 +6,6 @@ storybook-static
 .DS_Store
 .worktrees/
 .superpowers/
+.cursor/
+PROMPT.md
+*.tsbuildinfo

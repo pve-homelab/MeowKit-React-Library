@@ -1,8 +1,7 @@
-# MeowKit React UI Library — Design Spec
+# MeowKit React UI Library — Design
 
-**Date:** 2026-09-13  
-**Status:** Draft for user review  
-**Goal:** Production React component library for the MeowKit Companion App (and related surfaces), branded from [meowkit.cc](https://meowkit.cc/) and [mingolucky](https://github.com/mingolucky) repos, packaged and documented in a Cloudscape-like way.
+**Status:** Current  
+**Goal:** Production React component library for the MeowKit Companion App and related surfaces, branded from [meowkit.cc](https://meowkit.cc/) and [mingolucky](https://github.com/mingolucky) repositories, packaged and documented in a Cloudscape-like way.
 
 ## 1. Problem & success
 
@@ -16,13 +15,13 @@ Companion and IDE UIs need one shared MeowKit design system: consistent tokens, 
 - Monaco theme + editor wrapper work in the Companion App.
 - Storybook documents every public component.
 
-## 2. Decisions (locked)
+## 2. Decisions
 
 | Topic | Choice |
 |-------|--------|
 | Styling | Design tokens + CSS Modules per component + `@meowkit/global-styles` |
 | Packages | `@meowkit/design-tokens`, `@meowkit/global-styles`, `@meowkit/components` |
-| Modes | Light + dark from day one; accent `default` \| `lime` |
+| Modes | Light + dark; accent `default` \| `lime` |
 | Docs | Storybook (stories, props tables, live controls) |
 | Product UI | Core + Companion/IDE composites in `@meowkit/components` |
 | Behavior primitives | Radix UI / React Aria under the hood; MeowKit look via tokens + CSS Modules |
@@ -41,11 +40,14 @@ MeowKit-React-Library/
     components/        → @meowkit/components
   apps/
     storybook/         → docs + playground
+  examples/
+    companion-ide/     → sample Companion IDE composition
   docs/
-    superpowers/specs/
+    design.md
+    images/
 ```
 
-Tooling: pnpm workspaces; Vite or tsup for library builds; TypeScript strict.
+Tooling: pnpm workspaces; tsup for library builds; TypeScript strict.
 
 ### 3.2 Package responsibilities
 
@@ -203,7 +205,7 @@ Async UI uses explicit `status: 'idle' | 'busy' | 'success' | 'error'`.
 ### 7.2 Testing
 
 - Vitest + Testing Library for primitives and controllable behavior.
-- axe checks on a critical Storybook set.
+- axe checks on a critical component set.
 - Typecheck + export smoke tests for path imports.
 - Visual regression optional post-v1.
 
@@ -214,7 +216,7 @@ Async UI uses explicit `status: 'idle' | 'busy' | 'success' | 'error'`.
 
 ### 7.4 Versioning
 
-- Changesets; coordinated semver for the three `@meowkit/*` packages.
+- Changesets for coordinated semver across the three `@meowkit/*` packages (optional until packages are published).
 - Storybook static publish (e.g. GitHub Pages).
 
 ## 8. Storybook
@@ -229,22 +231,3 @@ Async UI uses explicit `status: 'idle' | 'busy' | 'success' | 'error'`.
 - Pixel-perfect clone of Shopify theme sections (marketing site chrome ≠ app chrome); brand tokens and patterns are the source of truth for the app library.
 - Full Cloudscape component parity (PropertyFilter, Board, etc.) — add when Companion needs them.
 - Dark-only or marketing-landing-first design (Companion is product UI).
-
-## 10. Implementation phasing (for the upcoming plan)
-
-1. Monorepo scaffold + tokens + global-styles + Storybook shell  
-2. Primitives (Button → forms → overlays)  
-3. Layout (AppLayout, toolbar/sidebar/status)  
-4. Patterns (Toast, FileExplorerTree, Table basic)  
-5. Monaco theme + MonacoEditor  
-6. Companion product panels  
-7. Hardening (a11y, tests, Changesets, publish path)
-
-Phases are sequential for a single implementation plan; later phases may be split into follow-up plans if needed.
-
-## 11. Open points resolved in this spec
-
-- IDE/Monaco: **in scope**.
-- Styling stack: **tokens + CSS Modules + global-styles** (not Tailwind-first, not CSS-in-JS-first).
-- API: **Cloudscape-like packaging**, **modern React events**.
-- Behavior: **Radix/React Aria**, not restyling Cloudscape itself.
