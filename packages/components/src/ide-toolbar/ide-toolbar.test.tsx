@@ -4,13 +4,22 @@ import { describe, expect, it, vi } from 'vitest';
 import IDEToolbar from './index';
 
 describe('IDEToolbar', () => {
-  it('renders primary Save, Build, Flash, and Run actions', () => {
+  it('renders no primary actions when handlers are omitted', () => {
     render(<IDEToolbar />);
 
     expect(screen.getByRole('toolbar')).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Save' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Build' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Flash' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Run' })).not.toBeInTheDocument();
+  });
+
+  it('renders only actions whose handlers are provided', () => {
+    render(<IDEToolbar onSave={vi.fn()} onRun={vi.fn()} />);
+
     expect(screen.getByRole('button', { name: 'Save' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Build' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Flash' })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Build' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Flash' })).not.toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Run' })).toBeInTheDocument();
   });
 

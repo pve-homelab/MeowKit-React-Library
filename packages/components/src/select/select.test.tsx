@@ -42,6 +42,21 @@ describe('Select', () => {
     expect(screen.getByRole('combobox')).toHaveAttribute('aria-invalid', 'true');
   });
 
+  it('forwards aria-describedby onto the combobox trigger', () => {
+    render(
+      <Select
+        options={options}
+        placeholder="Choose connection"
+        aria-label="Connection"
+        aria-describedby="connection-hint"
+      />,
+    );
+    expect(screen.getByRole('combobox', { name: 'Connection' })).toHaveAttribute(
+      'aria-describedby',
+      'connection-hint',
+    );
+  });
+
   it('honors defaultValue when uncontrolled', () => {
     render(<Select options={options} defaultValue="usb" />);
     expect(screen.getByRole('combobox')).toHaveTextContent('USB');

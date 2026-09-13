@@ -20,6 +20,7 @@ export interface SelectProps {
   invalid?: boolean;
   className?: string;
   'aria-label'?: string;
+  'aria-describedby'?: string;
 }
 
 export function InternalSelect({
@@ -32,6 +33,7 @@ export function InternalSelect({
   invalid,
   className,
   'aria-label': ariaLabel,
+  'aria-describedby': ariaDescribedBy,
 }: SelectProps) {
   return (
     <SelectPrimitive.Root
@@ -44,6 +46,7 @@ export function InternalSelect({
         className={clsx(chrome.field, styles.trigger, invalid && chrome.invalid, className)}
         aria-invalid={invalid ? true : undefined}
         aria-label={ariaLabel}
+        aria-describedby={ariaDescribedBy}
       >
         <SelectPrimitive.Value placeholder={placeholder} />
         <SelectPrimitive.Icon className={styles.icon} aria-hidden>
