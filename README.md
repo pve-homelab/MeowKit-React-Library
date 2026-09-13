@@ -10,6 +10,10 @@ See `docs/superpowers/specs/2026-09-13-meowkit-react-ui-library-design.md`.
 - `@meowkit/global-styles`
 - `@meowkit/components`
 
+## Examples
+
+`examples/companion-ide` is a Vite app that composes the Companion IDE shell (AppLayout, FileExplorerTree, MonacoEditor, build/serial panels) with mock state only. Run `pnpm --filter=@meowkit/example-companion-ide dev` after `pnpm build`.
+
 ## Quick start
 
 ```bash
