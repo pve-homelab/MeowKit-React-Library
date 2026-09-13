@@ -8,9 +8,12 @@
     "typecheck": "pnpm -r --filter=@meowkit/* run typecheck",
     "storybook": "pnpm --filter=@meowkit/storybook storybook",
     "smoke": "node scripts/smoke-exports.mjs",
-    "screenshots": "node scripts/capture-screenshots.mjs"
+    "screenshots": "node scripts/capture-screenshots.mjs",
+    "changeset": "changeset",
+    "version-packages": "changeset version"
   },
   "devDependencies": {
+    "@changesets/cli": "^3.0.2",
     "playwright": "^1.63.0",
     "typescript": "^5.8.2"
   }
