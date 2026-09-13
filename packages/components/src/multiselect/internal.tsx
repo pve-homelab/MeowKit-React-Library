@@ -22,6 +22,7 @@ export interface MultiselectProps {
   tokenLimit?: number;
   className?: string;
   'aria-label'?: string;
+  'aria-describedby'?: string;
 }
 
 function optionLabel(options: MultiselectOption[], value: string): ReactNode {
@@ -44,6 +45,7 @@ export function InternalMultiselect({
   tokenLimit,
   className,
   'aria-label': ariaLabel,
+  'aria-describedby': ariaDescribedBy,
 }: MultiselectProps) {
   const isControlled = value !== undefined;
   const [uncontrolled, setUncontrolled] = useState<string[]>(defaultValue ?? []);
@@ -194,6 +196,7 @@ export function InternalMultiselect({
           aria-controls={listboxId}
           aria-activedescendant={activeDescendant}
           aria-label={ariaLabel}
+          aria-describedby={ariaDescribedBy}
           aria-invalid={invalid ? true : undefined}
           disabled={disabled}
           onClick={() => setOpen((current) => !current)}
