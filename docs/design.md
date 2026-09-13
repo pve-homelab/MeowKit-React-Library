@@ -1,7 +1,8 @@
-# MeowKit React UI Library — Design
+# MeowKit React UI Library — Design (Unofficial)
 
 **Status:** Current  
-**Goal:** Production React component library for the MeowKit Companion App and related surfaces, branded from [meowkit.cc](https://meowkit.cc/) and [mingolucky](https://github.com/mingolucky) repositories, packaged and documented in a Cloudscape-like way.
+**Affiliation:** Unofficial community library — not affiliated with or endorsed by the official MeowKit project.  
+**Goal:** Production React component library for MeowKit Companion App and related surfaces, branded from [meowkit.cc](https://meowkit.cc/) and [mingolucky](https://github.com/mingolucky) repositories, packaged and documented in a Cloudscape-like way.
 
 ## 1. Problem & success
 

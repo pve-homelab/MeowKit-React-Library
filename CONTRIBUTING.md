@@ -1,6 +1,6 @@
 # Contributing to MeowKit
 
-Thanks for helping improve the MeowKit React library. This repo is a pnpm workspace with three public packages (`@meowkit/design-tokens`, `@meowkit/global-styles`, `@meowkit/components`), a private Storybook app, and example apps under `examples/`.
+Thanks for helping improve this unofficial MeowKit React library (community project, not affiliated with or endorsed by the official MeowKit project). This repo is a pnpm workspace with three public packages (`@meowkit/design-tokens`, `@meowkit/global-styles`, `@meowkit/components`), a private Storybook app, and example apps under `examples/`.
 
 ## Prerequisites
 

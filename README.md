@@ -1,6 +1,6 @@
-# MeowKit React Library
+# MeowKit React Library (Unofficial)
 
-Official MeowKit React UI library for Companion App and IDE surfaces — design tokens, accessible components, Storybook docs, and presentational Monaco/Companion panels.
+Unofficial community MeowKit React UI library for Companion App and IDE surfaces — design tokens, accessible components, Storybook docs, and presentational Monaco/Companion panels. Not affiliated with or endorsed by the official MeowKit project.
 
 Design overview: [`docs/design.md`](docs/design.md).
 
