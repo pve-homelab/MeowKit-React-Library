@@ -1,0 +1,93 @@
+.root {
+  box-sizing: border-box;
+  width: 100%;
+  color: var(--mk-color-text);
+  font-family: var(--mk-font-family-sans);
+}
+
+.container {
+  overflow: auto;
+  background: var(--mk-color-surface);
+  border: 1px solid var(--mk-color-border);
+  border-radius: var(--mk-radius-md);
+}
+
+.embedded {
+  overflow: auto;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.header {
+  padding: var(--mk-space-2) var(--mk-space-3);
+  border-bottom: 1px solid var(--mk-color-border);
+  background: var(--mk-color-surface-muted);
+  color: var(--mk-color-text);
+  font-size: var(--mk-font-size-sm);
+  font-weight: var(--mk-font-weight-medium);
+  line-height: var(--mk-line-height-normal);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.sortButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mk-space-1);
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.sortButton:focus-visible {
+  outline: 2px solid var(--mk-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.header[aria-sort='ascending'] .sortButton::after,
+.header[aria-sort='descending'] .sortButton::after,
+.header[aria-sort='none'] .sortButton::after {
+  color: var(--mk-color-text-muted);
+  font-size: var(--mk-font-size-xs);
+}
+
+.header[aria-sort='none'] .sortButton::after {
+  content: '↕';
+}
+
+.header[aria-sort='ascending'] .sortButton::after {
+  content: '↑';
+}
+
+.header[aria-sort='descending'] .sortButton::after {
+  content: '↓';
+}
+
+.cell {
+  padding: var(--mk-space-2) var(--mk-space-3);
+  border-bottom: 1px solid var(--mk-color-border);
+  font-size: var(--mk-font-size-sm);
+  line-height: var(--mk-line-height-normal);
+}
+
+.table tbody tr:last-child .cell {
+  border-bottom: none;
+}
+
+.loading,
+.empty {
+  padding: var(--mk-space-6) var(--mk-space-3);
+  color: var(--mk-color-text-muted);
+  font-size: var(--mk-font-size-sm);
+  text-align: center;
+}

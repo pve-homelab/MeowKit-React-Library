@@ -178,6 +178,10 @@
       "types": "./dist/code-view/index.d.ts",
       "import": "./dist/code-view/index.js"
     },
+    "./table": {
+      "types": "./dist/table/index.d.ts",
+      "import": "./dist/table/index.js"
+    },
     "./provider": {
       "types": "./dist/provider/index.d.ts",
       "import": "./dist/provider/index.js"
