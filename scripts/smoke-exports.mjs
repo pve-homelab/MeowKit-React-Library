@@ -66,6 +66,15 @@ for (const key of exportKeys) {
     throw new Error(`components${key} is missing an import target`);
   }
 
+  const typesPath = typeof entry === 'string' ? null : entry.types;
+  if (typeof typesPath !== 'string') {
+    throw new Error(`components${key} is missing a types target`);
+  }
+  const absTypes = resolve(componentsRoot, typesPath);
+  if (!existsSync(absTypes)) {
+    throw new Error(`missing types ${absTypes}`);
+  }
+
   const abs = resolve(componentsRoot, importPath);
   if (!existsSync(abs)) {
     throw new Error(`missing ${abs}`);
